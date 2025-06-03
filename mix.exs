@@ -11,8 +11,8 @@ defmodule MistralClient.MixProject do
       description: description(),
       package: package(),
       docs: docs(),
-      source_url: "https://github.com/your-org/mistral_client",
-      homepage_url: "https://github.com/your-org/mistral_client",
+      source_url: "https://github.com/rocket4ce/mistralex_ai",
+      homepage_url: "https://github.com/rocket4ce/mistralex_ai",
       elixirc_paths: elixirc_paths(Mix.env())
     ]
   end
@@ -52,7 +52,7 @@ defmodule MistralClient.MixProject do
     [
       name: "mistral_client",
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/your-org/mistral_client"}
+      links: %{"GitHub" => "https://github.com/rocket4ce/mistralex_ai"}
     ]
   end
 
