@@ -254,7 +254,7 @@ elixir examples/basic_usage.exs
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/mistral_client.git
+git clone https://github.com/rocket4ce/mistralex_ai.git
 cd mistral_client
 
 # Install dependencies
@@ -315,5 +315,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 - 📖 [Documentation](https://hexdocs.pm/mistral_client)
-- 🐛 [Issue Tracker](https://github.com/your-org/mistral_client/issues)
-- 💬 [Discussions](https://github.com/your-org/mistral_client/discussions)
+- 🐛 [Issue Tracker](https://github.com/rocket4ce/mistralex_ai/issues)
+- 💬 [Discussions](https://github.com/rocket4ce/mistralex_ai/discussions)
