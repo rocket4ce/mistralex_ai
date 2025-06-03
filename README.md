@@ -2,8 +2,8 @@
 
 A comprehensive Elixir client for the Mistral AI API with complete feature parity to the Python SDK.
 
-[![Hex.pm](https://img.shields.io/hexpm/v/mistral_client.svg)](https://hex.pm/packages/mistral_client)
-[![Documentation](https://img.shields.io/badge/docs-hexdocs-blue.svg)](https://hexdocs.pm/mistral_client)
+[![Hex.pm](https://img.shields.io/hexpm/v/mistralex_ai.svg)](https://hex.pm/packages/mistralex_ai)
+[![Documentation](https://img.shields.io/badge/docs-hexdocs-blue.svg)](https://hexdocs.pm/mistralex_ai)
 
 ## Features
 
@@ -20,12 +20,12 @@ A comprehensive Elixir client for the Mistral AI API with complete feature parit
 
 ## Installation
 
-Add `mistral_client` to your list of dependencies in `mix.exs`:
+Add `mistralex_ai` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:mistral_client, "~> 0.1.0"}
+    {:mistralex_ai, "~> 0.1.0"}
   ]
 end
 ```
@@ -44,7 +44,7 @@ export MISTRAL_API_KEY="your-api-key-here"
 **Application Configuration:**
 ```elixir
 # config/config.exs
-config :mistral_client,
+config :mistralex_ai,
   api_key: "your-api-key-here",
   base_url: "https://api.mistral.ai",
   timeout: 30_000
@@ -255,7 +255,7 @@ elixir examples/basic_usage.exs
 ```bash
 # Clone the repository
 git clone https://github.com/rocket4ce/mistralex_ai.git
-cd mistral_client
+cd mistralex_ai
 
 # Install dependencies
 mix deps.get
@@ -314,6 +314,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- 📖 [Documentation](https://hexdocs.pm/mistral_client)
+- 📖 [Documentation](https://hexdocs.pm/mistralex_ai)
 - 🐛 [Issue Tracker](https://github.com/rocket4ce/mistralex_ai/issues)
 - 💬 [Discussions](https://github.com/rocket4ce/mistralex_ai/discussions)

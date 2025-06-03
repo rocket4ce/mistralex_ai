@@ -20,7 +20,7 @@ defmodule MistralClient.Config do
 
   ### Application Configuration
 
-      config :mistral_client,
+      config :mistralex_ai,
         api_key: "your-api-key",
         base_url: "https://api.mistral.ai",
         timeout: 30_000
@@ -141,7 +141,7 @@ defmodule MistralClient.Config do
   """
   @spec get_api_key() :: String.t() | nil
   def get_api_key do
-    Application.get_env(:mistral_client, :api_key) ||
+    Application.get_env(:mistralex_ai, :api_key) ||
       System.get_env("MISTRAL_API_KEY")
   end
 
@@ -154,7 +154,7 @@ defmodule MistralClient.Config do
   """
   @spec get_base_url() :: String.t()
   def get_base_url do
-    Application.get_env(:mistral_client, :base_url) ||
+    Application.get_env(:mistralex_ai, :base_url) ||
       System.get_env("MISTRAL_BASE_URL") ||
       "https://api.mistral.ai"
   end
@@ -168,7 +168,7 @@ defmodule MistralClient.Config do
   """
   @spec get_timeout() :: integer()
   def get_timeout do
-    case Application.get_env(:mistral_client, :timeout) ||
+    case Application.get_env(:mistralex_ai, :timeout) ||
            System.get_env("MISTRAL_TIMEOUT") do
       nil -> 30_000
       timeout when is_integer(timeout) -> timeout
@@ -185,7 +185,7 @@ defmodule MistralClient.Config do
   """
   @spec get_max_retries() :: integer()
   def get_max_retries do
-    case Application.get_env(:mistral_client, :max_retries) ||
+    case Application.get_env(:mistralex_ai, :max_retries) ||
            System.get_env("MISTRAL_MAX_RETRIES") do
       nil -> 3
       retries when is_integer(retries) -> retries
@@ -202,7 +202,7 @@ defmodule MistralClient.Config do
   """
   @spec get_retry_delay() :: integer()
   def get_retry_delay do
-    case Application.get_env(:mistral_client, :retry_delay) ||
+    case Application.get_env(:mistralex_ai, :retry_delay) ||
            System.get_env("MISTRAL_RETRY_DELAY") do
       nil -> 1_000
       delay when is_integer(delay) -> delay
@@ -219,7 +219,7 @@ defmodule MistralClient.Config do
   """
   @spec get_user_agent() :: String.t()
   def get_user_agent do
-    Application.get_env(:mistral_client, :user_agent) ||
+    Application.get_env(:mistralex_ai, :user_agent) ||
       System.get_env("MISTRAL_USER_AGENT") ||
       "mistral-client-elixir/0.1.0"
   end

@@ -3,7 +3,7 @@ defmodule MistralClient.MixProject do
 
   def project do
     [
-      app: :mistral_client,
+      app: :mistralex_ai,
       version: "0.1.0",
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
@@ -50,7 +50,7 @@ defmodule MistralClient.MixProject do
 
   defp package do
     [
-      name: "mistral_client",
+      name: "mistralex_ai",
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/rocket4ce/mistralex_ai"}
     ]

@@ -9,7 +9,7 @@
 # - Response processing
 
 Mix.install([
-  {:mistral_client, path: "."},
+  {:mistralex_ai, path: "."},
   {:jason, "~> 1.4"}
 ])
 

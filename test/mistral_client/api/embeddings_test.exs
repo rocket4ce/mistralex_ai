@@ -103,7 +103,7 @@ defmodule MistralClient.API.EmbeddingsTest do
       expected_request = EmbeddingFixtures.embedding_request_single()
 
       # Set up environment for default client
-      Application.put_env(:mistral_client, :api_key, valid_api_key())
+      Application.put_env(:mistralex_ai, :api_key, valid_api_key())
 
       MistralClient.HttpClientMock
       |> expect(:request, fn :post, url, _headers, body, _options ->
@@ -115,7 +115,7 @@ defmodule MistralClient.API.EmbeddingsTest do
       assert {:ok, %Models.EmbeddingResponse{}} = Embeddings.create("Hello, world!")
 
       # Clean up
-      Application.delete_env(:mistral_client, :api_key)
+      Application.delete_env(:mistralex_ai, :api_key)
     end
 
     test "handles API errors" do

@@ -7,7 +7,7 @@
 # export MISTRAL_API_KEY="your-api-key-here"
 
 # Load the application
-Mix.install([{:mistral_client, path: "."}])
+Mix.install([{:mistralex_ai, path: "."}])
 
 defmodule BasicUsageExample do
   @moduledoc """

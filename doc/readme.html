@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.38.2">
+    <meta name="project" content="mistralex_ai v0.1.0">
+
+
+    <title>MistralClient SDK for Elixir — mistralex_ai v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-KV3YOVJ3.css" />
+
+    <script defer src="dist/sidebar_items-2D2F7960.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-DPJLHKSM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/rocket4ce/mistralex_ai" class="sidebar-projectName" translate="no">
+mistralex_ai
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of mistralex_ai</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search" tabindex="-1">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>MistralClient SDK for Elixir</h1>
+
+
+      <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/README.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p>A comprehensive Elixir client for the Mistral AI API with complete feature parity to the Python SDK.</p><p><a href="https://hex.pm/packages/mistralex_ai"><img src="https://img.shields.io/hexpm/v/mistralex_ai.svg" alt="Hex.pm"/></a>
+<a href="https://hexdocs.pm/mistralex_ai"><img src="https://img.shields.io/badge/docs-hexdocs-blue.svg" alt="Documentation"/></a></p><h2 id="features" class="section-heading"><a href="#features" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Features</span></h2><ul><li>✅ <strong>Complete API Coverage</strong>: Chat, Embeddings, Models, Files, and more</li><li>✅ <strong>Streaming Support</strong>: Real-time chat completions with Server-Sent Events</li><li>✅ <strong>Type Safety</strong>: Comprehensive Elixir structs and typespecs</li><li>✅ <strong>Error Handling</strong>: Robust error handling with automatic retries</li><li>✅ <strong>Configuration</strong>: Flexible configuration via application config or environment variables</li><li>✅ <strong>Authentication</strong>: Secure API key management</li><li>✅ <strong>Rate Limiting</strong>: Built-in rate limit handling with exponential backoff</li><li>✅ <strong>File Operations</strong>: Upload/download with multipart support</li><li>✅ <strong>Tool Calling</strong>: Function calling and structured outputs</li><li>✅ <strong>Similarity Functions</strong>: Built-in cosine similarity and distance calculations</li></ul><h2 id="installation" class="section-heading"><a href="#installation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Installation</span></h2><p>Add <code class="inline">mistralex_ai</code> to your list of dependencies in <code class="inline">mix.exs</code>:</p><pre><code class="makeup elixir" translate="no"><span class="kd">def</span><span class="w"> </span><span class="nf">deps</span><span class="w"> </span><span class="k" data-group-id="1263460388-1">do</span><span class="w">
+  </span><span class="p" data-group-id="1263460388-2">[</span><span class="w">
+    </span><span class="p" data-group-id="1263460388-3">{</span><span class="ss">:mistralex_ai</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;~&gt; 0.1.0&quot;</span><span class="p" data-group-id="1263460388-3">}</span><span class="w">
+  </span><span class="p" data-group-id="1263460388-2">]</span><span class="w">
+</span><span class="k" data-group-id="1263460388-1">end</span></code></pre><h2 id="quick-start" class="section-heading"><a href="#quick-start" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Quick Start</span></h2><h3 id="1-configuration" class="section-heading"><a href="#1-configuration" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">1. Configuration</span></h3><p>Set your API key using one of these methods:</p><p><strong>Environment Variable (Recommended):</strong></p><pre><code class="makeup bash" translate="no"><span class="">export MISTRAL_API_KEY=&quot;your-api-key-here&quot;
+</span></code></pre><p><strong>Application Configuration:</strong></p><pre><code class="makeup elixir" translate="no"><span class="c1"># config/config.exs</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="ss">:mistralex_ai</span><span class="p">,</span><span class="w">
+  </span><span class="ss">api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your-api-key-here&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">base_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://api.mistral.ai&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">timeout</span><span class="p">:</span><span class="w"> </span><span class="mi">30_000</span></code></pre><h3 id="2-basic-usage" class="section-heading"><a href="#2-basic-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">2. Basic Usage</span></h3><pre><code class="makeup elixir" translate="no"><span class="c1"># Chat completion</span><span class="w">
+</span><span class="p" data-group-id="1157083631-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="1157083631-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">chat</span><span class="p" data-group-id="1157083631-2">(</span><span class="p" data-group-id="1157083631-3">[</span><span class="w">
+  </span><span class="p" data-group-id="1157083631-4">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello, how are you?&quot;</span><span class="p" data-group-id="1157083631-4">}</span><span class="w">
+</span><span class="p" data-group-id="1157083631-3">]</span><span class="p" data-group-id="1157083631-2">)</span><span class="w">
+
+</span><span class="c1"># Generate embeddings</span><span class="w">
+</span><span class="p" data-group-id="1157083631-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">embeddings</span><span class="p" data-group-id="1157083631-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">embeddings</span><span class="p" data-group-id="1157083631-6">(</span><span class="s">&quot;Hello world&quot;</span><span class="p" data-group-id="1157083631-6">)</span><span class="w">
+
+</span><span class="c1"># List available models</span><span class="w">
+</span><span class="p" data-group-id="1157083631-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">models</span><span class="p" data-group-id="1157083631-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">models</span><span class="p" data-group-id="1157083631-8">(</span><span class="p" data-group-id="1157083631-8">)</span></code></pre><h2 id="api-reference" class="section-heading"><a href="#api-reference" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">API Reference</span></h2><h3 id="chat-completions" class="section-heading"><a href="#chat-completions" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Chat Completions</span></h3><pre><code class="makeup elixir" translate="no"><span class="c1"># Basic chat</span><span class="w">
+</span><span class="p" data-group-id="2487668065-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="2487668065-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">chat</span><span class="p" data-group-id="2487668065-2">(</span><span class="p" data-group-id="2487668065-3">[</span><span class="w">
+  </span><span class="p" data-group-id="2487668065-4">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;What is the capital of France?&quot;</span><span class="p" data-group-id="2487668065-4">}</span><span class="w">
+</span><span class="p" data-group-id="2487668065-3">]</span><span class="p" data-group-id="2487668065-2">)</span><span class="w">
+
+</span><span class="c1"># With options</span><span class="w">
+</span><span class="p" data-group-id="2487668065-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="2487668065-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">chat</span><span class="p" data-group-id="2487668065-6">(</span><span class="w">
+  </span><span class="p" data-group-id="2487668065-7">[</span><span class="p" data-group-id="2487668065-8">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p" data-group-id="2487668065-8">}</span><span class="p" data-group-id="2487668065-7">]</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="2487668065-9">%{</span><span class="ss">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mistral-large-latest&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">temperature</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="ss">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="2487668065-9">}</span><span class="w">
+</span><span class="p" data-group-id="2487668065-6">)</span><span class="w">
+
+</span><span class="c1"># Streaming chat</span><span class="w">
+</span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">chat_stream</span><span class="p" data-group-id="2487668065-10">(</span><span class="p" data-group-id="2487668065-11">[</span><span class="w">
+  </span><span class="p" data-group-id="2487668065-12">%{</span><span class="ss">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tell me a story&quot;</span><span class="p" data-group-id="2487668065-12">}</span><span class="w">
+</span><span class="p" data-group-id="2487668065-11">]</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2487668065-13">fn</span><span class="w"> </span><span class="n">chunk</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_in</span><span class="p" data-group-id="2487668065-14">(</span><span class="n">chunk</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2487668065-15">[</span><span class="s">&quot;choices&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">Access</span><span class="o">.</span><span class="n">at</span><span class="p" data-group-id="2487668065-16">(</span><span class="mi">0</span><span class="p" data-group-id="2487668065-16">)</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;delta&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;content&quot;</span><span class="p" data-group-id="2487668065-15">]</span><span class="p" data-group-id="2487668065-14">)</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="n">content</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">write</span><span class="p" data-group-id="2487668065-17">(</span><span class="n">content</span><span class="p" data-group-id="2487668065-17">)</span><span class="w">
+</span><span class="k" data-group-id="2487668065-13">end</span><span class="p" data-group-id="2487668065-10">)</span><span class="w">
+
+</span><span class="c1"># Tool calling</span><span class="w">
+</span><span class="n">tools</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2487668065-18">[</span><span class="w">
+  </span><span class="p" data-group-id="2487668065-19">%{</span><span class="w">
+    </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;function&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">function</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2487668065-20">%{</span><span class="w">
+      </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;get_weather&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Get current weather&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">parameters</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2487668065-21">%{</span><span class="w">
+        </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">properties</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2487668065-22">%{</span><span class="ss">location</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2487668065-23">%{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p" data-group-id="2487668065-23">}</span><span class="p" data-group-id="2487668065-22">}</span><span class="p">,</span><span class="w">
+        </span><span class="ss">required</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2487668065-24">[</span><span class="s">&quot;location&quot;</span><span class="p" data-group-id="2487668065-24">]</span><span class="w">
+      </span><span class="p" data-group-id="2487668065-21">}</span><span class="w">
+    </span><span class="p" data-group-id="2487668065-20">}</span><span class="w">
+  </span><span class="p" data-group-id="2487668065-19">}</span><span class="w">
+</span><span class="p" data-group-id="2487668065-18">]</span><span class="w">
+
+</span><span class="p" data-group-id="2487668065-25">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="2487668065-25">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Chat</span><span class="o">.</span><span class="n">with_tools</span><span class="p" data-group-id="2487668065-26">(</span><span class="n">messages</span><span class="p">,</span><span class="w"> </span><span class="n">tools</span><span class="p" data-group-id="2487668065-26">)</span></code></pre><h3 id="embeddings" class="section-heading"><a href="#embeddings" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Embeddings</span></h3><pre><code class="makeup elixir" translate="no"><span class="c1"># Single text</span><span class="w">
+</span><span class="p" data-group-id="5840355918-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="5840355918-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">embeddings</span><span class="p" data-group-id="5840355918-2">(</span><span class="s">&quot;Hello world&quot;</span><span class="p" data-group-id="5840355918-2">)</span><span class="w">
+
+</span><span class="c1"># Multiple texts</span><span class="w">
+</span><span class="p" data-group-id="5840355918-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="5840355918-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">embeddings</span><span class="p" data-group-id="5840355918-4">(</span><span class="p" data-group-id="5840355918-5">[</span><span class="w">
+  </span><span class="s">&quot;First document&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;Second document&quot;</span><span class="w">
+</span><span class="p" data-group-id="5840355918-5">]</span><span class="p" data-group-id="5840355918-4">)</span><span class="w">
+
+</span><span class="c1"># With options</span><span class="w">
+</span><span class="p" data-group-id="5840355918-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="5840355918-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">embeddings</span><span class="p" data-group-id="5840355918-7">(</span><span class="w">
+  </span><span class="s">&quot;Hello world&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="5840355918-8">%{</span><span class="ss">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mistral-embed&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">dimensions</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="p" data-group-id="5840355918-8">}</span><span class="w">
+</span><span class="p" data-group-id="5840355918-7">)</span><span class="w">
+
+</span><span class="c1"># Extract embeddings</span><span class="w">
+</span><span class="n">embeddings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Embeddings</span><span class="o">.</span><span class="n">extract_embeddings</span><span class="p" data-group-id="5840355918-9">(</span><span class="n">response</span><span class="p" data-group-id="5840355918-9">)</span><span class="w">
+
+</span><span class="c1"># Calculate similarity</span><span class="w">
+</span><span class="n">similarity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Embeddings</span><span class="o">.</span><span class="n">cosine_similarity</span><span class="p" data-group-id="5840355918-10">(</span><span class="w">
+  </span><span class="n">embedding1</span><span class="p">,</span><span class="w">
+  </span><span class="n">embedding2</span><span class="w">
+</span><span class="p" data-group-id="5840355918-10">)</span></code></pre><h3 id="models" class="section-heading"><a href="#models" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Models</span></h3><pre><code class="makeup elixir" translate="no"><span class="c1"># List all models</span><span class="w">
+</span><span class="p" data-group-id="8704529017-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">models</span><span class="p" data-group-id="8704529017-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">models</span><span class="p" data-group-id="8704529017-2">(</span><span class="p" data-group-id="8704529017-2">)</span><span class="w">
+
+</span><span class="c1"># Get specific model</span><span class="w">
+</span><span class="p" data-group-id="8704529017-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="p" data-group-id="8704529017-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">model</span><span class="p" data-group-id="8704529017-4">(</span><span class="s">&quot;mistral-large-latest&quot;</span><span class="p" data-group-id="8704529017-4">)</span><span class="w">
+
+</span><span class="c1"># Filter models</span><span class="w">
+</span><span class="p" data-group-id="8704529017-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">all_models</span><span class="p" data-group-id="8704529017-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Models</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="8704529017-6">(</span><span class="p" data-group-id="8704529017-6">)</span><span class="w">
+</span><span class="n">base_models</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Models</span><span class="o">.</span><span class="n">filter_models</span><span class="p" data-group-id="8704529017-7">(</span><span class="n">all_models</span><span class="p">,</span><span class="w"> </span><span class="ss">:base</span><span class="p" data-group-id="8704529017-7">)</span><span class="w">
+</span><span class="n">fine_tuned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Models</span><span class="o">.</span><span class="n">filter_models</span><span class="p" data-group-id="8704529017-8">(</span><span class="n">all_models</span><span class="p">,</span><span class="w"> </span><span class="ss">:fine_tuned</span><span class="p" data-group-id="8704529017-8">)</span></code></pre><h3 id="files" class="section-heading"><a href="#files" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Files</span></h3><pre><code class="makeup elixir" translate="no"><span class="c1"># Upload file</span><span class="w">
+</span><span class="p" data-group-id="5134379276-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p" data-group-id="5134379276-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">upload_file</span><span class="p" data-group-id="5134379276-2">(</span><span class="s">&quot;./data.jsonl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fine-tune&quot;</span><span class="p" data-group-id="5134379276-2">)</span><span class="w">
+
+</span><span class="c1"># List files</span><span class="w">
+</span><span class="p" data-group-id="5134379276-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p" data-group-id="5134379276-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">files</span><span class="p" data-group-id="5134379276-4">(</span><span class="p" data-group-id="5134379276-4">)</span><span class="w">
+
+</span><span class="c1"># Download file</span><span class="w">
+</span><span class="p" data-group-id="5134379276-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="5134379276-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">download</span><span class="p" data-group-id="5134379276-6">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="5134379276-6">)</span><span class="w">
+
+</span><span class="c1"># Delete file</span><span class="w">
+</span><span class="p" data-group-id="5134379276-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="5134379276-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">delete_file</span><span class="p" data-group-id="5134379276-8">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="5134379276-8">)</span></code></pre><h2 id="advanced-usage" class="section-heading"><a href="#advanced-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Advanced Usage</span></h2><h3 id="custom-client-configuration" class="section-heading"><a href="#custom-client-configuration" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Custom Client Configuration</span></h3><pre><code class="makeup elixir" translate="no"><span class="c1"># Create client with custom settings</span><span class="w">
+</span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="2266834649-1">(</span><span class="w">
+  </span><span class="ss">api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom-key&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">timeout</span><span class="p">:</span><span class="w"> </span><span class="mi">60_000</span><span class="p">,</span><span class="w">
+  </span><span class="ss">max_retries</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p" data-group-id="2266834649-1">)</span><span class="w">
+
+</span><span class="c1"># Use custom client</span><span class="w">
+</span><span class="p" data-group-id="2266834649-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="2266834649-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Chat</span><span class="o">.</span><span class="n">complete</span><span class="p" data-group-id="2266834649-3">(</span><span class="n">messages</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2266834649-4">%{</span><span class="p" data-group-id="2266834649-4">}</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="2266834649-3">)</span></code></pre><h3 id="error-handling" class="section-heading"><a href="#error-handling" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Error Handling</span></h3><pre><code class="makeup elixir" translate="no"><span class="k">case</span><span class="w"> </span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">chat</span><span class="p" data-group-id="5660539275-1">(</span><span class="n">messages</span><span class="p" data-group-id="5660539275-1">)</span><span class="w"> </span><span class="k" data-group-id="5660539275-2">do</span><span class="w">
+  </span><span class="p" data-group-id="5660539275-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="5660539275-3">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="c1"># Handle success</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5660539275-4">(</span><span class="s">&quot;Response: </span><span class="si" data-group-id="5660539275-5">#{</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">hd</span><span class="p" data-group-id="5660539275-6">(</span><span class="p" data-group-id="5660539275-6">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">get_in</span><span class="p" data-group-id="5660539275-7">(</span><span class="p" data-group-id="5660539275-8">[</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;content&quot;</span><span class="p" data-group-id="5660539275-8">]</span><span class="p" data-group-id="5660539275-7">)</span><span class="si" data-group-id="5660539275-5">}</span><span class="s">&quot;</span><span class="p" data-group-id="5660539275-4">)</span><span class="w">
+
+  </span><span class="p" data-group-id="5660539275-9">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5660539275-10">%</span><span class="nc" data-group-id="5660539275-10">MistralClient.Errors.RateLimitError</span><span class="p" data-group-id="5660539275-10">{</span><span class="ss">retry_after</span><span class="p">:</span><span class="w"> </span><span class="n">seconds</span><span class="p" data-group-id="5660539275-10">}</span><span class="p" data-group-id="5660539275-9">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="c1"># Handle rate limiting</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5660539275-11">(</span><span class="s">&quot;Rate limited. Retry after </span><span class="si" data-group-id="5660539275-12">#{</span><span class="n">seconds</span><span class="si" data-group-id="5660539275-12">}</span><span class="s"> seconds&quot;</span><span class="p" data-group-id="5660539275-11">)</span><span class="w">
+
+  </span><span class="p" data-group-id="5660539275-13">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5660539275-14">%</span><span class="nc" data-group-id="5660539275-14">MistralClient.Errors.AuthenticationError</span><span class="p" data-group-id="5660539275-14">{</span><span class="p" data-group-id="5660539275-14">}</span><span class="p" data-group-id="5660539275-13">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="c1"># Handle auth error</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5660539275-15">(</span><span class="s">&quot;Invalid API key&quot;</span><span class="p" data-group-id="5660539275-15">)</span><span class="w">
+
+  </span><span class="p" data-group-id="5660539275-16">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p" data-group-id="5660539275-16">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+    </span><span class="c1"># Handle other errors</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5660539275-17">(</span><span class="s">&quot;Error: </span><span class="si" data-group-id="5660539275-18">#{</span><span class="nc">Exception</span><span class="o">.</span><span class="n">message</span><span class="p" data-group-id="5660539275-19">(</span><span class="n">error</span><span class="p" data-group-id="5660539275-19">)</span><span class="si" data-group-id="5660539275-18">}</span><span class="s">&quot;</span><span class="p" data-group-id="5660539275-17">)</span><span class="w">
+</span><span class="k" data-group-id="5660539275-2">end</span></code></pre><h3 id="streaming-with-custom-processing" class="section-heading"><a href="#streaming-with-custom-processing" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Streaming with Custom Processing</span></h3><pre><code class="makeup elixir" translate="no"><span class="kn">alias</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="w">
+
+</span><span class="nc">MistralClient</span><span class="o">.</span><span class="n">chat_stream</span><span class="p" data-group-id="4233434068-1">(</span><span class="n">messages</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4233434068-2">fn</span><span class="w"> </span><span class="n">chunk</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="k">case</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">extract_content</span><span class="p" data-group-id="4233434068-3">(</span><span class="n">chunk</span><span class="p" data-group-id="4233434068-3">)</span><span class="w"> </span><span class="k" data-group-id="4233434068-4">do</span><span class="w">
+    </span><span class="no">nil</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="ss">:ok</span><span class="w">
+    </span><span class="n">content</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+      </span><span class="nc">IO</span><span class="o">.</span><span class="n">write</span><span class="p" data-group-id="4233434068-5">(</span><span class="n">content</span><span class="p" data-group-id="4233434068-5">)</span><span class="w">
+
+      </span><span class="c1"># Check if stream is complete</span><span class="w">
+      </span><span class="k">if</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">stream_complete?</span><span class="p" data-group-id="4233434068-6">(</span><span class="n">chunk</span><span class="p" data-group-id="4233434068-6">)</span><span class="w"> </span><span class="k" data-group-id="4233434068-7">do</span><span class="w">
+        </span><span class="n">reason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">extract_finish_reason</span><span class="p" data-group-id="4233434068-8">(</span><span class="n">chunk</span><span class="p" data-group-id="4233434068-8">)</span><span class="w">
+        </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="4233434068-9">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Stream finished: </span><span class="si" data-group-id="4233434068-10">#{</span><span class="n">reason</span><span class="si" data-group-id="4233434068-10">}</span><span class="s">&quot;</span><span class="p" data-group-id="4233434068-9">)</span><span class="w">
+      </span><span class="k" data-group-id="4233434068-7">end</span><span class="w">
+  </span><span class="k" data-group-id="4233434068-4">end</span><span class="w">
+</span><span class="k" data-group-id="4233434068-2">end</span><span class="p" data-group-id="4233434068-1">)</span></code></pre><h2 id="configuration-options" class="section-heading"><a href="#configuration-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Configuration Options</span></h2><table><thead><tr><th style="text-align: left;">Option</th><th style="text-align: left;">Environment Variable</th><th style="text-align: left;">Default</th><th style="text-align: left;">Description</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">:api_key</code></td><td style="text-align: left;"><code class="inline">MISTRAL_API_KEY</code></td><td style="text-align: left;"><code class="inline">nil</code></td><td style="text-align: left;">Your Mistral API key (required)</td></tr><tr><td style="text-align: left;"><code class="inline">:base_url</code></td><td style="text-align: left;"><code class="inline">MISTRAL_BASE_URL</code></td><td style="text-align: left;"><code class="inline">&quot;https://api.mistral.ai&quot;</code></td><td style="text-align: left;">API base URL</td></tr><tr><td style="text-align: left;"><code class="inline">:timeout</code></td><td style="text-align: left;"><code class="inline">MISTRAL_TIMEOUT</code></td><td style="text-align: left;"><code class="inline">30_000</code></td><td style="text-align: left;">Request timeout (ms)</td></tr><tr><td style="text-align: left;"><code class="inline">:max_retries</code></td><td style="text-align: left;"><code class="inline">MISTRAL_MAX_RETRIES</code></td><td style="text-align: left;"><code class="inline">3</code></td><td style="text-align: left;">Maximum retry attempts</td></tr><tr><td style="text-align: left;"><code class="inline">:retry_delay</code></td><td style="text-align: left;"><code class="inline">MISTRAL_RETRY_DELAY</code></td><td style="text-align: left;"><code class="inline">1_000</code></td><td style="text-align: left;">Base retry delay (ms)</td></tr><tr><td style="text-align: left;"><code class="inline">:user_agent</code></td><td style="text-align: left;"><code class="inline">MISTRAL_USER_AGENT</code></td><td style="text-align: left;"><code class="inline">&quot;mistral-client-elixir/0.1.0&quot;</code></td><td style="text-align: left;">User agent string</td></tr></tbody></table><h2 id="examples" class="section-heading"><a href="#examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><p>Run the included examples:</p><pre><code class="makeup bash" translate="no"><span class="">cd mistralex_sdk
+</span><span class="">
+</span><span class=""># Set your API key
+</span><span class="">export MISTRAL_API_KEY=&quot;your-api-key-here&quot;
+</span><span class="">
+</span><span class=""># Run basic usage example
+</span><span class="">elixir examples/basic_usage.exs
+</span></code></pre><h2 id="development" class="section-heading"><a href="#development" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Development</span></h2><pre><code class="makeup bash" translate="no"><span class=""># Clone the repository
+</span><span class="">git clone https://github.com/rocket4ce/mistralex_ai.git
+</span><span class="">cd mistralex_ai
+</span><span class="">
+</span><span class=""># Install dependencies
+</span><span class="">mix deps.get
+</span><span class="">
+</span><span class=""># Run tests
+</span><span class="">mix test
+</span><span class="">
+</span><span class=""># Generate documentation
+</span><span class="">mix docs
+</span><span class="">
+</span><span class=""># Check code quality
+</span><span class="">mix credo
+</span><span class="">mix dialyzer
+</span></code></pre><h2 id="api-coverage" class="section-heading"><a href="#api-coverage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">API Coverage</span></h2><h3 id="implemented" class="section-heading"><a href="#implemented" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">✅ Implemented</span></h3><ul><li><strong>Chat API</strong>: Complete, streaming, tool calling, structured outputs</li><li><strong>Embeddings API</strong>: Single/batch generation, similarity functions</li><li><strong>Models API</strong>: List, retrieve, manage fine-tuned models</li><li><strong>Files API</strong>: Upload, download, list, delete with multipart support</li></ul><h3 id="in-progress" class="section-heading"><a href="#in-progress" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">🚧 In Progress</span></h3><ul><li><strong>Agents API</strong>: AI agents management</li><li><strong>Fine-tuning API</strong>: Model training and management</li><li><strong>Batch API</strong>: Batch processing operations</li></ul><h3 id="planned" class="section-heading"><a href="#planned" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">⏳ Planned</span></h3><ul><li><strong>Conversations API</strong>: Beta conversation management</li><li><strong>Jobs API</strong>: Job management and monitoring</li><li><strong>Classifiers API</strong>: Text classification</li><li><strong>OCR API</strong>: Optical character recognition</li><li><strong>FIM API</strong>: Fill-in-the-middle completion</li></ul><h2 id="contributing" class="section-heading"><a href="#contributing" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Contributing</span></h2><ol><li>Fork the repository</li><li>Create your feature branch (<code class="inline">git checkout -b feature/amazing-feature</code>)</li><li>Commit your changes (<code class="inline">git commit -m 'Add amazing feature'</code>)</li><li>Push to the branch (<code class="inline">git push origin feature/amazing-feature</code>)</li><li>Open a Pull Request</li></ol><h2 id="license" class="section-heading"><a href="#license" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">License</span></h2><p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p><h2 id="acknowledgments" class="section-heading"><a href="#acknowledgments" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Acknowledgments</span></h2><ul><li><a href="https://mistral.ai/">Mistral AI</a> for providing the API</li><li><a href="https://github.com/mistralai/client-python">mistral-client-python</a> for API reference</li><li>The Elixir community for excellent libraries and tools</li></ul><h2 id="support" class="section-heading"><a href="#support" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Support</span></h2><ul><li>📖 <a href="https://hexdocs.pm/mistralex_ai">Documentation</a></li><li>🐛 <a href="https://github.com/rocket4ce/mistralex_ai/issues">Issue Tracker</a></li><li>💬 <a href="https://github.com/rocket4ce/mistralex_ai/discussions">Discussions</a></li></ul>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+  </div>
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/mistralex_ai/0.1.0" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/mistralex_ai/0.1.0">Hex Preview</a>
+
+              (<a href="https://preview.hex.pm/preview/mistralex_ai/0.1.0/show/README.md">current file</a>)
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="mistralex_ai.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.38.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

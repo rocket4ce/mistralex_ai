@@ -15,12 +15,12 @@ A comprehensive Elixir SDK for the Mistral AI API, providing access to all Mistr
 
 ## Installation
 
-Add `mistral_client` to your list of dependencies in `mix.exs`:
+Add `mistralex_ai` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:mistral_client, "~> 1.0"}
+    {:mistralex_ai, "~> 1.0"}
   ]
 end
 ```
@@ -70,7 +70,7 @@ config = MistralClient.Config.new(
 Add to your `config/config.exs`:
 
 ```elixir
-config :mistral_client,
+config :mistralex_ai,
   api_key: System.get_env("MISTRAL_API_KEY"),
   endpoint: "https://api.mistral.ai",
   timeout: 30_000,
@@ -509,7 +509,7 @@ Use application configuration for production:
 
 ```elixir
 # config/prod.exs
-config :mistral_client,
+config :mistralex_ai,
   api_key: System.get_env("MISTRAL_API_KEY"),
   timeout: 60_000,
   max_retries: 5
@@ -517,7 +517,7 @@ config :mistral_client,
 # In your application
 defmodule MyApp.MistralService do
   def get_config do
-    Application.get_env(:mistral_client)
+    Application.get_env(:mistralex_ai)
     |> MistralClient.Config.new()
   end
 end
@@ -686,6 +686,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- [GitHub Issues](https://github.com/your-org/mistral_client/issues)
-- [Documentation](https://hexdocs.pm/mistral_client)
+- [GitHub Issues](https://github.com/your-org/mistralex_ai/issues)
+- [Documentation](https://hexdocs.pm/mistralex_ai)
 - [Mistral AI Documentation](https://docs.mistral.ai/)

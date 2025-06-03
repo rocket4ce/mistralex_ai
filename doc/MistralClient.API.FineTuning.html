@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.38.2">
+    <meta name="project" content="mistralex_ai v0.1.0">
+
+
+    <title>MistralClient.API.FineTuning — mistralex_ai v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-KV3YOVJ3.css" />
+
+    <script defer src="dist/sidebar_items-2D2F7960.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-DPJLHKSM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/rocket4ce/mistralex_ai" class="sidebar-projectName" translate="no">
+mistralex_ai
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of mistralex_ai</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search" tabindex="-1">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">MistralClient.API.FineTuning</span> 
+      <small class="app-vsn" translate="no">(mistralex_ai v0.1.0)</small>
+
+    </h1>
+
+      <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Fine-tuning API for creating and managing fine-tuning jobs.</p><p>This module provides functions to:</p><ul><li>Create fine-tuning jobs</li><li>List fine-tuning jobs with filtering</li><li>Get fine-tuning job details</li><li>Start, cancel fine-tuning jobs</li><li>Archive/unarchive fine-tuned models</li><li>Update fine-tuned models</li></ul><h2 id="module-examples" class="section-heading"><a href="#module-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Create a fine-tuning job</span><span class="w">
+</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Config</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="7097341898-1">(</span><span class="ss">api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your-api-key&quot;</span><span class="p" data-group-id="7097341898-1">)</span><span class="w">
+
+</span><span class="n">hyperparameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7097341898-2">%</span><span class="nc" data-group-id="7097341898-2">MistralClient.Models.CompletionTrainingParameters</span><span class="p" data-group-id="7097341898-2">{</span><span class="w">
+  </span><span class="ss">learning_rate</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">,</span><span class="w">
+  </span><span class="ss">training_steps</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span><span class="p" data-group-id="7097341898-2">}</span><span class="w">
+
+</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7097341898-3">%</span><span class="nc" data-group-id="7097341898-3">MistralClient.Models.FineTuningJobRequest</span><span class="p" data-group-id="7097341898-3">{</span><span class="w">
+  </span><span class="ss">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;open-mistral-7b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">hyperparameters</span><span class="p">:</span><span class="w"> </span><span class="n">hyperparameters</span><span class="p">,</span><span class="w">
+  </span><span class="ss">training_files</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7097341898-4">[</span><span class="p" data-group-id="7097341898-5">%</span><span class="nc" data-group-id="7097341898-5">MistralClient.Models.TrainingFile</span><span class="p" data-group-id="7097341898-5">{</span><span class="ss">file_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;file-123&quot;</span><span class="p" data-group-id="7097341898-5">}</span><span class="p" data-group-id="7097341898-4">]</span><span class="w">
+</span><span class="p" data-group-id="7097341898-3">}</span><span class="w">
+
+</span><span class="p" data-group-id="7097341898-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="7097341898-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">create_job</span><span class="p" data-group-id="7097341898-7">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p" data-group-id="7097341898-7">)</span><span class="w">
+
+</span><span class="c1"># List jobs with filtering</span><span class="w">
+</span><span class="p" data-group-id="7097341898-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">jobs</span><span class="p" data-group-id="7097341898-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">list_jobs</span><span class="p" data-group-id="7097341898-9">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7097341898-10">%{</span><span class="w">
+  </span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;RUNNING&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;open-mistral-7b&quot;</span><span class="w">
+</span><span class="p" data-group-id="7097341898-10">}</span><span class="p" data-group-id="7097341898-9">)</span><span class="w">
+
+</span><span class="c1"># Get job details</span><span class="w">
+</span><span class="p" data-group-id="7097341898-11">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="7097341898-11">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">get_job</span><span class="p" data-group-id="7097341898-12">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;job-123&quot;</span><span class="p" data-group-id="7097341898-12">)</span><span class="w">
+
+</span><span class="c1"># Start a job</span><span class="w">
+</span><span class="p" data-group-id="7097341898-13">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="7097341898-13">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">start_job</span><span class="p" data-group-id="7097341898-14">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;job-123&quot;</span><span class="p" data-group-id="7097341898-14">)</span><span class="w">
+
+</span><span class="c1"># Cancel a job</span><span class="w">
+</span><span class="p" data-group-id="7097341898-15">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="7097341898-15">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">cancel_job</span><span class="p" data-group-id="7097341898-16">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;job-123&quot;</span><span class="p" data-group-id="7097341898-16">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:fine_tuneable_model_type/0" data-no-tooltip="" translate="no">fine_tuneable_model_type()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:job_status/0" data-no-tooltip="" translate="no">job_status()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#archive_model/2" data-no-tooltip="" translate="no">archive_model(config, model_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Archives a fine-tuned model.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#cancel_job/2" data-no-tooltip="" translate="no">cancel_job(config, job_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Cancels a fine-tuning job.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_job/2" data-no-tooltip="" translate="no">create_job(config, request)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new fine-tuning job.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_job/2" data-no-tooltip="" translate="no">get_job(config, job_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Gets details of a specific fine-tuning job.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_jobs/2" data-no-tooltip="" translate="no">list_jobs(config, options \\ %{})</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Lists fine-tuning jobs with optional filtering.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#start_job/2" data-no-tooltip="" translate="no">start_job(config, job_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Starts a validated fine-tuning job.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#unarchive_model/2" data-no-tooltip="" translate="no">unarchive_model(config, model_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Unarchives a fine-tuned model.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_model/3" data-no-tooltip="" translate="no">update_model(config, model_id, updates)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Updates a fine-tuned model.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:fine_tuneable_model_type/0">
+
+  <div class="detail-header">
+    <a href="#t:fine_tuneable_model_type/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">fine_tuneable_model_type()</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L71" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> fine_tuneable_model_type() :: :completion | :classifier</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:job_status/0">
+
+  <div class="detail-header">
+    <a href="#t:job_status/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">job_status()</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L59" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> job_status() ::
+  :queued
+  | :started
+  | :validating
+  | :validated
+  | :running
+  | :failed_validation
+  | :failed
+  | :success
+  | :cancelled
+  | :cancellation_requested</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="archive_model/2">
+
+  <div class="detail-header">
+    <a href="#archive_model/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">archive_model(config, model_id)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L240" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> archive_model(<a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Archives a fine-tuned model.</p><h2 id="archive_model/2-parameters" class="section-heading"><a href="#archive_model/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">model_id</code> - The ID of the model to archive</li></ul><h2 id="archive_model/2-examples" class="section-heading"><a href="#archive_model/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="3600958186-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="p" data-group-id="3600958186-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">archive_model</span><span class="p" data-group-id="3600958186-2">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ft:open-mistral-7b:my-model:xxx&quot;</span><span class="p" data-group-id="3600958186-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="cancel_job/2">
+
+  <div class="detail-header">
+    <a href="#cancel_job/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">cancel_job(config, job_id)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L220" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> cancel_job(<a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, <a href="MistralClient.Models.FineTuningJobResponse.html#t:t/0">MistralClient.Models.FineTuningJobResponse.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Cancels a fine-tuning job.</p><h2 id="cancel_job/2-parameters" class="section-heading"><a href="#cancel_job/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">job_id</code> - The ID of the job to cancel</li></ul><h2 id="cancel_job/2-examples" class="section-heading"><a href="#cancel_job/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="0945881012-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="0945881012-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">cancel_job</span><span class="p" data-group-id="0945881012-2">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;job-123&quot;</span><span class="p" data-group-id="0945881012-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="create_job/2">
+
+  <div class="detail-header">
+    <a href="#create_job/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">create_job(config, request)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L114" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> create_job(
+  <a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(),
+  <a href="MistralClient.Models.FineTuningJobRequest.html#t:t/0">MistralClient.Models.FineTuningJobRequest.t</a>()
+) ::
+  {:ok, <a href="MistralClient.Models.FineTuningJobResponse.html#t:t/0">MistralClient.Models.FineTuningJobResponse.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Creates a new fine-tuning job.</p><h2 id="create_job/2-parameters" class="section-heading"><a href="#create_job/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">request</code> - Fine-tuning job request parameters</li></ul><h2 id="create_job/2-request-parameters" class="section-heading"><a href="#create_job/2-request-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Request Parameters</span></h2><ul><li><code class="inline">model</code> (required) - The name of the model to fine-tune</li><li><code class="inline">hyperparameters</code> (required) - Training hyperparameters</li><li><code class="inline">training_files</code> - List of training file IDs</li><li><code class="inline">validation_files</code> - List of validation file IDs</li><li><code class="inline">suffix</code> - String to add to fine-tuned model name</li><li><code class="inline">integrations</code> - List of integrations (e.g., Weights &amp; Biases)</li><li><code class="inline">auto_start</code> - Whether to automatically start the job</li><li><code class="inline">invalid_sample_skip_percentage</code> - Percentage of invalid samples to skip</li><li><code class="inline">job_type</code> - Type of fine-tuning job</li><li><code class="inline">repositories</code> - List of GitHub repositories</li><li><code class="inline">classifier_targets</code> - Classifier targets (for classifier jobs)</li></ul><h2 id="create_job/2-examples" class="section-heading"><a href="#create_job/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">hyperparameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9671800886-1">%</span><span class="nc" data-group-id="9671800886-1">CompletionTrainingParameters</span><span class="p" data-group-id="9671800886-1">{</span><span class="w">
+  </span><span class="ss">learning_rate</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">,</span><span class="w">
+  </span><span class="ss">training_steps</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="ss">weight_decay</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="w">
+</span><span class="p" data-group-id="9671800886-1">}</span><span class="w">
+
+</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9671800886-2">%</span><span class="nc" data-group-id="9671800886-2">FineTuningJobRequest</span><span class="p" data-group-id="9671800886-2">{</span><span class="w">
+  </span><span class="ss">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;open-mistral-7b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">hyperparameters</span><span class="p">:</span><span class="w"> </span><span class="n">hyperparameters</span><span class="p">,</span><span class="w">
+  </span><span class="ss">training_files</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9671800886-3">[</span><span class="p" data-group-id="9671800886-4">%</span><span class="nc" data-group-id="9671800886-4">TrainingFile</span><span class="p" data-group-id="9671800886-4">{</span><span class="ss">file_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;file-123&quot;</span><span class="p" data-group-id="9671800886-4">}</span><span class="p" data-group-id="9671800886-3">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">suffix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-model&quot;</span><span class="w">
+</span><span class="p" data-group-id="9671800886-2">}</span><span class="w">
+
+</span><span class="p" data-group-id="9671800886-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="9671800886-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">create_job</span><span class="p" data-group-id="9671800886-6">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p" data-group-id="9671800886-6">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_job/2">
+
+  <div class="detail-header">
+    <a href="#get_job/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">get_job(config, job_id)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L180" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_job(<a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, <a href="MistralClient.Models.FineTuningJobResponse.html#t:t/0">MistralClient.Models.FineTuningJobResponse.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Gets details of a specific fine-tuning job.</p><h2 id="get_job/2-parameters" class="section-heading"><a href="#get_job/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">job_id</code> - The ID of the job to retrieve</li></ul><h2 id="get_job/2-examples" class="section-heading"><a href="#get_job/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="2308914610-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="2308914610-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">get_job</span><span class="p" data-group-id="2308914610-2">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;job-123&quot;</span><span class="p" data-group-id="2308914610-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="list_jobs/2">
+
+    <span id="list_jobs/1"></span>
+
+  <div class="detail-header">
+    <a href="#list_jobs/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list_jobs(config, options \\ %{})</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L158" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list_jobs(<a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="MistralClient.Models.FineTuningJobsResponse.html#t:t/0">MistralClient.Models.FineTuningJobsResponse.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Lists fine-tuning jobs with optional filtering.</p><h2 id="list_jobs/2-parameters" class="section-heading"><a href="#list_jobs/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">options</code> - Filtering and pagination options</li></ul><h2 id="list_jobs/2-options" class="section-heading"><a href="#list_jobs/2-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">page</code> - Page number (default: 0)</li><li><code class="inline">page_size</code> - Number of items per page (default: 100)</li><li><code class="inline">model</code> - Filter by model name</li><li><code class="inline">created_after</code> - Filter by creation date (DateTime)</li><li><code class="inline">created_before</code> - Filter by creation date (DateTime)</li><li><code class="inline">created_by_me</code> - Show only jobs created by the caller (default: false)</li><li><code class="inline">status</code> - Filter by job status</li><li><code class="inline">wandb_project</code> - Filter by Weights &amp; Biases project</li><li><code class="inline">wandb_name</code> - Filter by Weights &amp; Biases run name</li><li><code class="inline">suffix</code> - Filter by model suffix</li></ul><h2 id="list_jobs/2-examples" class="section-heading"><a href="#list_jobs/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># List all jobs</span><span class="w">
+</span><span class="p" data-group-id="6100625816-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">jobs</span><span class="p" data-group-id="6100625816-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">list_jobs</span><span class="p" data-group-id="6100625816-2">(</span><span class="n">config</span><span class="p" data-group-id="6100625816-2">)</span><span class="w">
+
+</span><span class="c1"># List running jobs for a specific model</span><span class="w">
+</span><span class="p" data-group-id="6100625816-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">jobs</span><span class="p" data-group-id="6100625816-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">list_jobs</span><span class="p" data-group-id="6100625816-4">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6100625816-5">%{</span><span class="w">
+  </span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="ss">:running</span><span class="p">,</span><span class="w">
+  </span><span class="ss">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;open-mistral-7b&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">page_size</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+</span><span class="p" data-group-id="6100625816-5">}</span><span class="p" data-group-id="6100625816-4">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="start_job/2">
+
+  <div class="detail-header">
+    <a href="#start_job/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">start_job(config, job_id)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L200" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> start_job(<a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, <a href="MistralClient.Models.FineTuningJobResponse.html#t:t/0">MistralClient.Models.FineTuningJobResponse.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Starts a validated fine-tuning job.</p><h2 id="start_job/2-parameters" class="section-heading"><a href="#start_job/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">job_id</code> - The ID of the job to start</li></ul><h2 id="start_job/2-examples" class="section-heading"><a href="#start_job/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="3897996852-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="3897996852-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">start_job</span><span class="p" data-group-id="3897996852-2">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;job-123&quot;</span><span class="p" data-group-id="3897996852-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="unarchive_model/2">
+
+  <div class="detail-header">
+    <a href="#unarchive_model/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">unarchive_model(config, model_id)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L260" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> unarchive_model(<a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Unarchives a fine-tuned model.</p><h2 id="unarchive_model/2-parameters" class="section-heading"><a href="#unarchive_model/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">model_id</code> - The ID of the model to unarchive</li></ul><h2 id="unarchive_model/2-examples" class="section-heading"><a href="#unarchive_model/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5514504076-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="p" data-group-id="5514504076-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">unarchive_model</span><span class="p" data-group-id="5514504076-2">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ft:open-mistral-7b:my-model:xxx&quot;</span><span class="p" data-group-id="5514504076-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="update_model/3">
+
+  <div class="detail-header">
+    <a href="#update_model/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">update_model(config, model_id, updates)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/fine_tuning.ex#L283" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_model(<a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Updates a fine-tuned model.</p><h2 id="update_model/3-parameters" class="section-heading"><a href="#update_model/3-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">model_id</code> - The ID of the model to update</li><li><code class="inline">updates</code> - Map of fields to update</li></ul><h2 id="update_model/3-examples" class="section-heading"><a href="#update_model/3-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="4823239639-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="p" data-group-id="4823239639-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.FineTuning</span><span class="o">.</span><span class="n">update_model</span><span class="p" data-group-id="4823239639-2">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ft:open-mistral-7b:my-model:xxx&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4823239639-3">%{</span><span class="w">
+  </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Updated Model Name&quot;</span><span class="w">
+</span><span class="p" data-group-id="4823239639-3">}</span><span class="p" data-group-id="4823239639-2">)</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/mistralex_ai/0.1.0" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/mistralex_ai/0.1.0">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="mistralex_ai.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.38.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

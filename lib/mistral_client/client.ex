@@ -211,7 +211,7 @@ defmodule MistralClient.Client do
   # Private functions
 
   defp get_http_client do
-    Application.get_env(:mistral_client, :http_client, MistralClient.HttpClient.Req)
+    Application.get_env(:mistralex_ai, :http_client, MistralClient.HttpClient.Req)
   end
 
   defp build_req_options(config) do

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.38.2">
+    <meta name="project" content="mistralex_ai v0.1.0">
+
+
+    <title>API Reference — mistralex_ai v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-KV3YOVJ3.css" />
+
+    <script defer src="dist/sidebar_items-2D2F7960.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-DPJLHKSM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/rocket4ce/mistralex_ai" class="sidebar-projectName" translate="no">
+mistralex_ai
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of mistralex_ai</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search" tabindex="-1">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>API Reference <small class="app-vsn">mistralex_ai v#0.1.0</small></h1>
+
+      <a href="https://github.com/rocket4ce/mistralex_ai" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+    <section class="details-list">
+      <h2 id="modules" class="section-heading">Modules</h2>
+      <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.html" translate="no">MistralClient</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Elixir client for the Mistral AI API.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Agents.html" translate="no">MistralClient.API.Agents</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Agents API for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Batch.html" translate="no">MistralClient.API.Batch</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Batch API for processing multiple requests asynchronously.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Beta.html" translate="no">MistralClient.API.Beta</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Beta API endpoints for experimental Mistral AI features.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Beta.Agents.html" translate="no">MistralClient.API.Beta.Agents</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Beta Agents API for creating and managing AI agents.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Beta.Conversations.html" translate="no">MistralClient.API.Beta.Conversations</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Beta Conversations API for managing persistent conversations with agents.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Chat.html" translate="no">MistralClient.API.Chat</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Chat completions API for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Classifiers.html" translate="no">MistralClient.API.Classifiers</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Classifiers API for text classification and content moderation.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Embeddings.html" translate="no">MistralClient.API.Embeddings</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Embeddings API for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.FIM.html" translate="no">MistralClient.API.FIM</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>FIM (Fill-in-the-Middle) API for code completion.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Files.html" translate="no">MistralClient.API.Files</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Files API for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.FineTuning.html" translate="no">MistralClient.API.FineTuning</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Fine-tuning API for creating and managing fine-tuning jobs.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Jobs.html" translate="no">MistralClient.API.Jobs</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Jobs API for managing fine-tuning jobs.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.Models.html" translate="no">MistralClient.API.Models</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Models API for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.API.OCR.html" translate="no">MistralClient.API.OCR</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>OCR (Optical Character Recognition) API operations.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Behaviours.HttpClient.html" translate="no">MistralClient.Behaviours.HttpClient</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Behaviour for HTTP client implementations.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Client.html" translate="no">MistralClient.Client</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>HTTP client for the Mistral AI API.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Config.html" translate="no">MistralClient.Config</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Configuration management for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.html" translate="no">MistralClient.Errors</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Error definitions and handling for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.APIError.html" translate="no">MistralClient.Errors.APIError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>General API error for HTTP 4xx and 5xx responses.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.AuthenticationError.html" translate="no">MistralClient.Errors.AuthenticationError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Authentication error (HTTP 401).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.ConfigurationError.html" translate="no">MistralClient.Errors.ConfigurationError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Configuration error.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.NetworkError.html" translate="no">MistralClient.Errors.NetworkError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Network connectivity error.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.NotFoundError.html" translate="no">MistralClient.Errors.NotFoundError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Resource not found error (HTTP 404).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.PermissionError.html" translate="no">MistralClient.Errors.PermissionError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Permission denied error (HTTP 403).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.RateLimitError.html" translate="no">MistralClient.Errors.RateLimitError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Rate limit exceeded error (HTTP 429).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.ServerError.html" translate="no">MistralClient.Errors.ServerError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Server-side error (HTTP 5xx).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.TimeoutError.html" translate="no">MistralClient.Errors.TimeoutError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Request timeout error.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Errors.ValidationError.html" translate="no">MistralClient.Errors.ValidationError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Request validation error.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.HttpClient.Req.html" translate="no">MistralClient.HttpClient.Req</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Req-based HTTP client implementation.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.html" translate="no">MistralClient.Models</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Core data structures for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ArchiveFTModelOut.html" translate="no">MistralClient.Models.ArchiveFTModelOut</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an archive fine-tuned model response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.BaseModelCard.html" translate="no">MistralClient.Models.BaseModelCard</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a base model card.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.BatchError.html" translate="no">MistralClient.Models.BatchError</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an error in a batch job.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.BatchJobIn.html" translate="no">MistralClient.Models.BatchJobIn</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a batch job creation request.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.BatchJobOut.html" translate="no">MistralClient.Models.BatchJobOut</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a batch job response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.BatchJobsOut.html" translate="no">MistralClient.Models.BatchJobsOut</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a list of batch jobs response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.html" translate="no">MistralClient.Models.Beta</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Data models for Beta API features.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.Agent.html" translate="no">MistralClient.Models.Beta.Agent</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an AI agent with specific instructions and capabilities.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.CompletionArgs.html" translate="no">MistralClient.Models.Beta.CompletionArgs</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents completion arguments for agents and conversations.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.Conversation.html" translate="no">MistralClient.Models.Beta.Conversation</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a conversation entity with its configuration.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.ConversationEntry.html" translate="no">MistralClient.Models.Beta.ConversationEntry</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an entry in a conversation (message, function call, etc.).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.ConversationHistory.html" translate="no">MistralClient.Models.Beta.ConversationHistory</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents the history of a conversation with all entries.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.ConversationResponse.html" translate="no">MistralClient.Models.Beta.ConversationResponse</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents the response from conversation operations.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.Tool.html" translate="no">MistralClient.Models.Beta.Tool</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a tool that can be used by agents.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Beta.ToolFunction.html" translate="no">MistralClient.Models.Beta.ToolFunction</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a function tool definition.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ChatClassificationRequest.html" translate="no">MistralClient.Models.ChatClassificationRequest</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a chat classification request.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ChatCompletion.html" translate="no">MistralClient.Models.ChatCompletion</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a chat completion response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ChatCompletionChoice.html" translate="no">MistralClient.Models.ChatCompletionChoice</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a choice in a chat completion response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ChatModerationRequest.html" translate="no">MistralClient.Models.ChatModerationRequest</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a chat moderation request.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ClassificationRequest.html" translate="no">MistralClient.Models.ClassificationRequest</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a classification request.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ClassificationResponse.html" translate="no">MistralClient.Models.ClassificationResponse</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a classification response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ClassificationTargetResult.html" translate="no">MistralClient.Models.ClassificationTargetResult</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents classification target results with scores.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.CompletionTrainingParameters.html" translate="no">MistralClient.Models.CompletionTrainingParameters</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents completion training hyperparameters for fine-tuning.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.DeleteFileOut.html" translate="no">MistralClient.Models.DeleteFileOut</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a delete file response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.DeleteModelOut.html" translate="no">MistralClient.Models.DeleteModelOut</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a delete model response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.DocumentURLChunk.html" translate="no">MistralClient.Models.DocumentURLChunk</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a document URL chunk for OCR processing.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Embedding.html" translate="no">MistralClient.Models.Embedding</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an individual embedding.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.EmbeddingResponse.html" translate="no">MistralClient.Models.EmbeddingResponse</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an embedding response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FIMCompletionChoice.html" translate="no">MistralClient.Models.FIMCompletionChoice</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a choice in a FIM completion response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FIMCompletionMessage.html" translate="no">MistralClient.Models.FIMCompletionMessage</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a message in a FIM completion response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FIMCompletionRequest.html" translate="no">MistralClient.Models.FIMCompletionRequest</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a FIM (Fill-in-the-Middle) completion request.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FIMCompletionResponse.html" translate="no">MistralClient.Models.FIMCompletionResponse</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a FIM completion response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FTModelCard.html" translate="no">MistralClient.Models.FTModelCard</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a fine-tuned model card.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.File.html" translate="no">MistralClient.Models.File</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents file metadata.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FileList.html" translate="no">MistralClient.Models.FileList</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a list of files response with pagination.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FileSignedURL.html" translate="no">MistralClient.Models.FileSignedURL</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a file signed URL response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FileUpload.html" translate="no">MistralClient.Models.FileUpload</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a file upload response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FineTuningJobRequest.html" translate="no">MistralClient.Models.FineTuningJobRequest</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a fine-tuning job creation request.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FineTuningJobResponse.html" translate="no">MistralClient.Models.FineTuningJobResponse</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a fine-tuning job response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.FineTuningJobsResponse.html" translate="no">MistralClient.Models.FineTuningJobsResponse</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a list of fine-tuning jobs response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.GithubRepository.html" translate="no">MistralClient.Models.GithubRepository</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a GitHub repository for fine-tuning.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ImageURLChunk.html" translate="no">MistralClient.Models.ImageURLChunk</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an image URL chunk for OCR processing.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ImageURLChunkImageURL.html" translate="no">MistralClient.Models.ImageURLChunkImageURL</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an image URL within an image URL chunk.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Message.html" translate="no">MistralClient.Models.Message</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a chat message.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Model.html" translate="no">MistralClient.Models.Model</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents model information.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ModelCapabilities.html" translate="no">MistralClient.Models.ModelCapabilities</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents model capabilities.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ModelList.html" translate="no">MistralClient.Models.ModelList</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a list of models response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ModelPermission.html" translate="no">MistralClient.Models.ModelPermission</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents model access permissions.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ModerationObject.html" translate="no">MistralClient.Models.ModerationObject</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a moderation object with categories and scores.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ModerationResponse.html" translate="no">MistralClient.Models.ModerationResponse</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a moderation response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.OCRImageObject.html" translate="no">MistralClient.Models.OCRImageObject</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an extracted image object from OCR processing.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.OCRPageDimensions.html" translate="no">MistralClient.Models.OCRPageDimensions</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents the dimensions of an OCR page.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.OCRPageObject.html" translate="no">MistralClient.Models.OCRPageObject</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a page object from OCR processing.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.OCRRequest.html" translate="no">MistralClient.Models.OCRRequest</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an OCR processing request.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.OCRResponse.html" translate="no">MistralClient.Models.OCRResponse</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an OCR processing response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.OCRUsageInfo.html" translate="no">MistralClient.Models.OCRUsageInfo</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents usage information for OCR processing.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ToolCall.html" translate="no">MistralClient.Models.ToolCall</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a tool/function call.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.ToolCallFunction.html" translate="no">MistralClient.Models.ToolCallFunction</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents function details in a tool call.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.TrainingFile.html" translate="no">MistralClient.Models.TrainingFile</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a training file for fine-tuning.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.UnarchiveFTModelOut.html" translate="no">MistralClient.Models.UnarchiveFTModelOut</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an unarchive fine-tuned model response.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.Usage.html" translate="no">MistralClient.Models.Usage</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents token usage information.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Models.WandbIntegration.html" translate="no">MistralClient.Models.WandbIntegration</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a Weights &amp; Biases integration for fine-tuning.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralClient.Stream.html" translate="no">MistralClient.Stream</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Server-Sent Events (SSE) streaming support for the Mistral AI client.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="MistralexSdk.html" translate="no">MistralexSdk</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Documentation for <a><code class="inline">MistralexSdk</code></a>.</p></div>
+
+</div>
+
+      </div>
+    </section>
+
+
+</div>
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/mistralex_ai/0.1.0" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/mistralex_ai/0.1.0">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="mistralex_ai.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.38.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

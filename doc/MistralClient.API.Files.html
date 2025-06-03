@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.38.2">
+    <meta name="project" content="mistralex_ai v0.1.0">
+
+
+    <title>MistralClient.API.Files — mistralex_ai v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-KV3YOVJ3.css" />
+
+    <script defer src="dist/sidebar_items-2D2F7960.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-DPJLHKSM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/rocket4ce/mistralex_ai" class="sidebar-projectName" translate="no">
+mistralex_ai
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of mistralex_ai</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search" tabindex="-1">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">MistralClient.API.Files</span> 
+      <small class="app-vsn" translate="no">(mistralex_ai v0.1.0)</small>
+
+    </h1>
+
+      <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Files API for the Mistral AI client.</p><p>This module provides functions for managing files used with the Mistral API,
+including uploading files for fine-tuning, retrieving file information,
+and downloading files.</p><h2 id="module-features" class="section-heading"><a href="#module-features" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Features</span></h2><ul><li>File upload with multipart support</li><li>File listing and retrieval</li><li>File deletion</li><li>File download</li><li>Signed URL generation</li><li>File metadata management</li></ul><h2 id="module-usage" class="section-heading"><a href="#module-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Upload a file</span><span class="w">
+</span><span class="p" data-group-id="7395996103-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p" data-group-id="7395996103-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">upload</span><span class="p" data-group-id="7395996103-2">(</span><span class="s">&quot;./training_data.jsonl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fine-tune&quot;</span><span class="p" data-group-id="7395996103-2">)</span><span class="w">
+
+</span><span class="c1"># List all files</span><span class="w">
+</span><span class="p" data-group-id="7395996103-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p" data-group-id="7395996103-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="7395996103-4">(</span><span class="p" data-group-id="7395996103-4">)</span><span class="w">
+
+</span><span class="c1"># Download a file</span><span class="w">
+</span><span class="p" data-group-id="7395996103-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="7395996103-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">download</span><span class="p" data-group-id="7395996103-6">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="7395996103-6">)</span><span class="w">
+
+</span><span class="c1"># Delete a file</span><span class="w">
+</span><span class="p" data-group-id="7395996103-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="7395996103-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="7395996103-8">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="7395996103-8">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:file_id/0" data-no-tooltip="" translate="no">file_id()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:file_path/0" data-no-tooltip="" translate="no">file_path()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:purpose/0" data-no-tooltip="" translate="no">purpose()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete/2" data-no-tooltip="" translate="no">delete(file_id, client \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Delete a file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#download/2" data-no-tooltip="" translate="no">download(file_id, client \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Download the content of a file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#exists?/2" data-no-tooltip="" translate="no">exists?(file_id, client \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Check if a file exists.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#filter_by_purpose/2" data-no-tooltip="" translate="no">filter_by_purpose(files, purpose)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Filter files by purpose.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_signed_url/3" data-no-tooltip="" translate="no">get_signed_url(file_id, options \\ [], client \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Get a signed URL for downloading a file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list/2" data-no-tooltip="" translate="no">list(options \\ [], client \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List all uploaded files with pagination and filtering support.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#retrieve/2" data-no-tooltip="" translate="no">retrieve(file_id, client \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Retrieve information about a specific file.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#total_size/1" data-no-tooltip="" translate="no">total_size(files)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Get the total size of all files.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#upload/4" data-no-tooltip="" translate="no">upload(file_path, purpose, options \\ [], client \\ nil)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Upload a file with support for progress tracking and validation.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:file_id/0">
+
+  <div class="detail-header">
+    <a href="#t:file_id/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">file_id()</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L38" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> file_id() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:file_path/0">
+
+  <div class="detail-header">
+    <a href="#t:file_path/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">file_path()</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L39" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> file_path() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:purpose/0">
+
+  <div class="detail-header">
+    <a href="#t:purpose/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">purpose()</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L40" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> purpose() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="delete/2">
+
+    <span id="delete/1"></span>
+
+  <div class="detail-header">
+    <a href="#delete/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete(file_id, client \\ nil)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L208" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> delete(<a href="#t:file_id/0">file_id</a>(), <a href="MistralClient.Client.html#t:t/0">MistralClient.Client.t</a>() | nil) ::
+  {:ok, <a href="MistralClient.Models.DeleteFileOut.html#t:t/0">MistralClient.Models.DeleteFileOut.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>Delete a file.</p><h2 id="delete/2-parameters" class="section-heading"><a href="#delete/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">file_id</code> - The ID of the file to delete</li><li><code class="inline">client</code> - HTTP client (optional, uses default if not provided)</li></ul><h2 id="delete/2-examples" class="section-heading"><a href="#delete/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="1075695151-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="1075695151-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="1075695151-2">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="1075695151-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="download/2">
+
+    <span id="download/1"></span>
+
+  <div class="detail-header">
+    <a href="#download/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">download(file_id, client \\ nil)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L241" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> download(<a href="#t:file_id/0">file_id</a>(), <a href="MistralClient.Client.html#t:t/0">MistralClient.Client.t</a>() | nil) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>Download the content of a file.</p><h2 id="download/2-parameters" class="section-heading"><a href="#download/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">file_id</code> - The ID of the file to download</li><li><code class="inline">client</code> - HTTP client (optional, uses default if not provided)</li></ul><h2 id="download/2-examples" class="section-heading"><a href="#download/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="8027898044-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="8027898044-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">download</span><span class="p" data-group-id="8027898044-2">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="8027898044-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="exists?/2">
+
+    <span id="exists?/1"></span>
+
+  <div class="detail-header">
+    <a href="#exists?/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">exists?(file_id, client \\ nil)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L328" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> exists?(<a href="#t:file_id/0">file_id</a>(), <a href="MistralClient.Client.html#t:t/0">MistralClient.Client.t</a>() | nil) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Check if a file exists.</p><h2 id="exists?/2-parameters" class="section-heading"><a href="#exists?/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">file_id</code> - The ID of the file to check</li><li><code class="inline">client</code> - HTTP client (optional, uses default if not provided)</li></ul><h2 id="exists?/2-examples" class="section-heading"><a href="#exists?/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="no">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">exists?</span><span class="p" data-group-id="3929971701-1">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="3929971701-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">exists?</span><span class="p" data-group-id="3929971701-2">(</span><span class="s">&quot;non-existent-file&quot;</span><span class="p" data-group-id="3929971701-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="filter_by_purpose/2">
+
+  <div class="detail-header">
+    <a href="#filter_by_purpose/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">filter_by_purpose(files, purpose)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L350" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> filter_by_purpose([<a href="MistralClient.Models.File.html#t:t/0">MistralClient.Models.File.t</a>()], <a href="#t:purpose/0">purpose</a>()) :: [
+  <a href="MistralClient.Models.File.html#t:t/0">MistralClient.Models.File.t</a>()
+]</pre>
+
+      </div>
+
+<p>Filter files by purpose.</p><h2 id="filter_by_purpose/2-parameters" class="section-heading"><a href="#filter_by_purpose/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">files</code> - List of files to filter</li><li><code class="inline">purpose</code> - Purpose to filter by</li></ul><h2 id="filter_by_purpose/2-examples" class="section-heading"><a href="#filter_by_purpose/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5817429892-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">all_files</span><span class="p" data-group-id="5817429892-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="5817429892-2">(</span><span class="p" data-group-id="5817429892-2">)</span><span class="w">
+</span><span class="n">fine_tune_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">filter_by_purpose</span><span class="p" data-group-id="5817429892-3">(</span><span class="n">all_files</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fine-tune&quot;</span><span class="p" data-group-id="5817429892-3">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="get_signed_url/3">
+
+    <span id="get_signed_url/1"></span>
+
+    <span id="get_signed_url/2"></span>
+
+  <div class="detail-header">
+    <a href="#get_signed_url/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">get_signed_url(file_id, options \\ [], client \\ nil)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L291" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_signed_url(<a href="#t:file_id/0">file_id</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>(), <a href="MistralClient.Client.html#t:t/0">MistralClient.Client.t</a>() | nil) ::
+  {:ok, <a href="MistralClient.Models.FileSignedURL.html#t:t/0">MistralClient.Models.FileSignedURL.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>Get a signed URL for downloading a file.</p><h2 id="get_signed_url/3-parameters" class="section-heading"><a href="#get_signed_url/3-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">file_id</code> - The ID of the file</li><li><code class="inline">options</code> - Keyword list of options:<ul><li><code class="inline">:expiry</code> - Number of hours before the URL expires (default: 24)</li></ul></li><li><code class="inline">client</code> - HTTP client (optional, uses default if not provided)</li></ul><h2 id="get_signed_url/3-examples" class="section-heading"><a href="#get_signed_url/3-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Get signed URL with default expiry (24 hours)</span><span class="w">
+</span><span class="p" data-group-id="0845359433-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">signed_url_response</span><span class="p" data-group-id="0845359433-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">get_signed_url</span><span class="p" data-group-id="0845359433-2">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="0845359433-2">)</span><span class="w">
+
+</span><span class="c1"># Get signed URL with custom expiry (48 hours)</span><span class="w">
+</span><span class="p" data-group-id="0845359433-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">signed_url_response</span><span class="p" data-group-id="0845359433-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">get_signed_url</span><span class="p" data-group-id="0845359433-4">(</span><span class="w">
+  </span><span class="s">&quot;file-abc123&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">expiry</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="w">
+</span><span class="p" data-group-id="0845359433-4">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="list/2">
+
+    <span id="list/0"></span>
+
+    <span id="list/1"></span>
+
+  <div class="detail-header">
+    <a href="#list/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list(options \\ [], client \\ nil)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L136" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>(),
+  <a href="MistralClient.Client.html#t:t/0">MistralClient.Client.t</a>() | nil
+) :: {:ok, <a href="MistralClient.Models.FileList.html#t:t/0">MistralClient.Models.FileList.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>List all uploaded files with pagination and filtering support.</p><h2 id="list/2-parameters" class="section-heading"><a href="#list/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">options</code> - Keyword list of options:<ul><li><code class="inline">:page</code> - Page number (default: 0)</li><li><code class="inline">:page_size</code> - Number of items per page (default: 100)</li><li><code class="inline">:purpose</code> - Filter by purpose (e.g., &quot;fine-tune&quot;, &quot;assistants&quot;)</li><li><code class="inline">:sample_type</code> - Filter by sample type</li><li><code class="inline">:source</code> - Filter by source</li><li><code class="inline">:search</code> - Search term to filter files</li></ul></li><li><code class="inline">client</code> - HTTP client (optional, uses default if not provided)</li></ul><h2 id="list/2-examples" class="section-heading"><a href="#list/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># List all files</span><span class="w">
+</span><span class="p" data-group-id="2942431635-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p" data-group-id="2942431635-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="2942431635-2">(</span><span class="p" data-group-id="2942431635-2">)</span><span class="w">
+
+</span><span class="c1"># List with pagination</span><span class="w">
+</span><span class="p" data-group-id="2942431635-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p" data-group-id="2942431635-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="2942431635-4">(</span><span class="ss">page</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">page_size</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p" data-group-id="2942431635-4">)</span><span class="w">
+
+</span><span class="c1"># Filter by purpose</span><span class="w">
+</span><span class="p" data-group-id="2942431635-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p" data-group-id="2942431635-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="2942431635-6">(</span><span class="ss">purpose</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;fine-tune&quot;</span><span class="p" data-group-id="2942431635-6">)</span><span class="w">
+
+</span><span class="c1"># Search files</span><span class="w">
+</span><span class="p" data-group-id="2942431635-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p" data-group-id="2942431635-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="2942431635-8">(</span><span class="ss">search</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;training&quot;</span><span class="p" data-group-id="2942431635-8">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="retrieve/2">
+
+    <span id="retrieve/1"></span>
+
+  <div class="detail-header">
+    <a href="#retrieve/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">retrieve(file_id, client \\ nil)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L174" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> retrieve(<a href="#t:file_id/0">file_id</a>(), <a href="MistralClient.Client.html#t:t/0">MistralClient.Client.t</a>() | nil) ::
+  {:ok, <a href="MistralClient.Models.File.html#t:t/0">MistralClient.Models.File.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>Retrieve information about a specific file.</p><h2 id="retrieve/2-parameters" class="section-heading"><a href="#retrieve/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">file_id</code> - The ID of the file to retrieve</li><li><code class="inline">client</code> - HTTP client (optional, uses default if not provided)</li></ul><h2 id="retrieve/2-examples" class="section-heading"><a href="#retrieve/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="3198736975-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p" data-group-id="3198736975-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">retrieve</span><span class="p" data-group-id="3198736975-2">(</span><span class="s">&quot;file-abc123&quot;</span><span class="p" data-group-id="3198736975-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="total_size/1">
+
+  <div class="detail-header">
+    <a href="#total_size/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">total_size(files)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L367" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> total_size([<a href="MistralClient.Models.File.html#t:t/0">MistralClient.Models.File.t</a>()]) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+      </div>
+
+<p>Get the total size of all files.</p><h2 id="total_size/1-parameters" class="section-heading"><a href="#total_size/1-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">files</code> - List of files</li></ul><h2 id="total_size/1-examples" class="section-heading"><a href="#total_size/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="0604223192-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="p" data-group-id="0604223192-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="0604223192-2">(</span><span class="p" data-group-id="0604223192-2">)</span><span class="w">
+</span><span class="n">total_bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">total_size</span><span class="p" data-group-id="0604223192-3">(</span><span class="n">files</span><span class="p" data-group-id="0604223192-3">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="upload/4">
+
+    <span id="upload/2"></span>
+
+    <span id="upload/3"></span>
+
+  <div class="detail-header">
+    <a href="#upload/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">upload(file_path, purpose, options \\ [], client \\ nil)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/files.ex#L76" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> upload(<a href="#t:file_path/0">file_path</a>(), <a href="#t:purpose/0">purpose</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>(), <a href="MistralClient.Client.html#t:t/0">MistralClient.Client.t</a>() | nil) ::
+  {:ok, <a href="MistralClient.Models.FileUpload.html#t:t/0">MistralClient.Models.FileUpload.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>Upload a file with support for progress tracking and validation.</p><h2 id="upload/4-parameters" class="section-heading"><a href="#upload/4-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">file_path</code> - Path to the file to upload</li><li><code class="inline">purpose</code> - Purpose of the file (e.g., &quot;fine-tune&quot;, &quot;assistants&quot;, &quot;batch&quot;)</li><li><code class="inline">options</code> - Keyword list of options:<ul><li><code class="inline">:progress_callback</code> - Function to call with upload progress (0.0 to 1.0)</li><li><code class="inline">:filename</code> - Custom filename to use (defaults to basename of file_path)</li></ul></li><li><code class="inline">client</code> - HTTP client (optional, uses default if not provided)</li></ul><h2 id="upload/4-examples" class="section-heading"><a href="#upload/4-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Simple upload</span><span class="w">
+</span><span class="p" data-group-id="8595944805-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p" data-group-id="8595944805-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">upload</span><span class="p" data-group-id="8595944805-2">(</span><span class="s">&quot;./training_data.jsonl&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;fine-tune&quot;</span><span class="p" data-group-id="8595944805-2">)</span><span class="w">
+
+</span><span class="c1"># Upload with custom filename</span><span class="w">
+</span><span class="p" data-group-id="8595944805-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p" data-group-id="8595944805-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">upload</span><span class="p" data-group-id="8595944805-4">(</span><span class="w">
+  </span><span class="s">&quot;./data.jsonl&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;fine-tune&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;custom_training_data.jsonl&quot;</span><span class="w">
+</span><span class="p" data-group-id="8595944805-4">)</span><span class="w">
+
+</span><span class="c1"># Upload with progress tracking</span><span class="w">
+</span><span class="n">progress_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="8595944805-5">fn</span><span class="w"> </span><span class="n">progress</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="8595944805-6">(</span><span class="s">&quot;Upload progress: </span><span class="si" data-group-id="8595944805-7">#{</span><span class="n">trunc</span><span class="p" data-group-id="8595944805-8">(</span><span class="n">progress</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="8595944805-8">)</span><span class="si" data-group-id="8595944805-7">}</span><span class="s">%&quot;</span><span class="p" data-group-id="8595944805-6">)</span><span class="w"> </span><span class="k" data-group-id="8595944805-5">end</span><span class="w">
+</span><span class="p" data-group-id="8595944805-9">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p" data-group-id="8595944805-9">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.Files</span><span class="o">.</span><span class="n">upload</span><span class="p" data-group-id="8595944805-10">(</span><span class="w">
+  </span><span class="s">&quot;./large_file.jsonl&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;fine-tune&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">progress_callback</span><span class="p">:</span><span class="w"> </span><span class="n">progress_fn</span><span class="w">
+</span><span class="p" data-group-id="8595944805-10">)</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/mistralex_ai/0.1.0" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/mistralex_ai/0.1.0">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="mistralex_ai.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.38.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

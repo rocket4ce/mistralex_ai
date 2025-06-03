@@ -275,8 +275,8 @@ defmodule MistralClient.API.Agents do
 
   defp get_default_client do
     # Try to get API key from application environment for testing
-    api_key = Application.get_env(:mistral_client, :api_key)
-    http_client = Application.get_env(:mistral_client, :http_client)
+    api_key = Application.get_env(:mistralex_ai, :api_key)
+    http_client = Application.get_env(:mistralex_ai, :http_client)
 
     config = []
     # Always provide a default API key for testing if none is set

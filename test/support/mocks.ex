@@ -18,7 +18,7 @@ defmodule MistralClient.Test.Mocks do
   """
   def setup_mocks do
     # Configure the application to use the mock HTTP client
-    Application.put_env(:mistral_client, :http_client, MistralClient.Test.MockHttpClient)
+    Application.put_env(:mistralex_ai, :http_client, MistralClient.Test.MockHttpClient)
 
     # Set Mox to verify mocks on exit
     Mox.defmock(MistralClient.Test.MockHttpClient, for: MistralClient.Behaviours.HttpClient)

@@ -11,7 +11,7 @@ defmodule MistralClient do
 
   Configure your API key and other settings:
 
-      config :mistral_client,
+      config :mistralex_ai,
         api_key: "your-api-key",
         base_url: "https://api.mistral.ai",
         timeout: 30_000

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.38.2">
+    <meta name="project" content="mistralex_ai v0.1.0">
+
+
+    <title>MistralClient.Stream — mistralex_ai v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-KV3YOVJ3.css" />
+
+    <script defer src="dist/sidebar_items-2D2F7960.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-DPJLHKSM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/rocket4ce/mistralex_ai" class="sidebar-projectName" translate="no">
+mistralex_ai
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of mistralex_ai</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search" tabindex="-1">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">MistralClient.Stream</span> 
+      <small class="app-vsn" translate="no">(mistralex_ai v0.1.0)</small>
+
+    </h1>
+
+      <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Server-Sent Events (SSE) streaming support for the Mistral AI client.</p><p>This module provides utilities for handling streaming responses from the
+Mistral API, particularly for chat completions that return data in real-time.</p><h2 id="module-features" class="section-heading"><a href="#module-features" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Features</span></h2><ul><li>SSE parsing and handling</li><li>Chunk processing and validation</li><li>Stream error recovery</li><li>Callback-based processing</li><li>Stream completion detection</li></ul><h2 id="module-usage" class="section-heading"><a href="#module-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Process a stream with a callback</span><span class="w">
+</span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">process_stream</span><span class="p" data-group-id="2706946497-1">(</span><span class="n">stream_data</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2706946497-2">fn</span><span class="w"> </span><span class="n">chunk</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="n">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_in</span><span class="p" data-group-id="2706946497-3">(</span><span class="n">chunk</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2706946497-4">[</span><span class="s">&quot;choices&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">Access</span><span class="o">.</span><span class="n">at</span><span class="p" data-group-id="2706946497-5">(</span><span class="mi">0</span><span class="p" data-group-id="2706946497-5">)</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;delta&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;content&quot;</span><span class="p" data-group-id="2706946497-4">]</span><span class="p" data-group-id="2706946497-3">)</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="n">content</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">write</span><span class="p" data-group-id="2706946497-6">(</span><span class="n">content</span><span class="p" data-group-id="2706946497-6">)</span><span class="w">
+</span><span class="k" data-group-id="2706946497-2">end</span><span class="p" data-group-id="2706946497-1">)</span><span class="w">
+
+</span><span class="c1"># Parse individual SSE chunks</span><span class="w">
+</span><span class="p" data-group-id="2706946497-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">chunk</span><span class="p" data-group-id="2706946497-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">parse_chunk</span><span class="p" data-group-id="2706946497-8">(</span><span class="s">&quot;data: {...}&quot;</span><span class="p" data-group-id="2706946497-8">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:callback/0" data-no-tooltip="" translate="no">callback()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:chunk/0" data-no-tooltip="" translate="no">chunk()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#accumulate_content/2" data-no-tooltip="" translate="no">accumulate_content(chunks, choice_index \\ 0)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Accumulate content from multiple stream chunks.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#extract_content/2" data-no-tooltip="" translate="no">extract_content(chunk, choice_index \\ 0)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Extract content from a stream chunk.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#extract_finish_reason/2" data-no-tooltip="" translate="no">extract_finish_reason(chunk, choice_index \\ 0)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Extract finish reason from a stream chunk.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#extract_tool_calls/2" data-no-tooltip="" translate="no">extract_tool_calls(chunk, choice_index \\ 0)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Extract tool calls from a stream chunk.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#parse_chunk/2" data-no-tooltip="" translate="no">parse_chunk(chunk_data, options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Parse a single SSE chunk.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#process_stream/3" data-no-tooltip="" translate="no">process_stream(stream_data, callback, options \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Process a stream of Server-Sent Events.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#request_stream/6" data-no-tooltip="" translate="no">request_stream(config, method, path, body, query_params, callback)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Make a streaming HTTP request.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#stream_complete?/1" data-no-tooltip="" translate="no">stream_complete?(chunk)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Check if a chunk indicates the stream is complete.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#validate_chunk/1" data-no-tooltip="" translate="no">validate_chunk(chunk)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Validate a parsed chunk.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:callback/0">
+
+  <div class="detail-header">
+    <a href="#t:callback/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">callback()</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L32" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> callback() :: (<a href="#t:chunk/0">chunk</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:chunk/0">
+
+  <div class="detail-header">
+    <a href="#t:chunk/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">chunk()</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L31" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> chunk() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="accumulate_content/2">
+
+    <span id="accumulate_content/1"></span>
+
+  <div class="detail-header">
+    <a href="#accumulate_content/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">accumulate_content(chunks, choice_index \\ 0)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L237" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> accumulate_content([<a href="#t:chunk/0">chunk</a>()], <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Accumulate content from multiple stream chunks.</p><h2 id="accumulate_content/2-parameters" class="section-heading"><a href="#accumulate_content/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">chunks</code> - List of parsed chunks</li><li><code class="inline">choice_index</code> - Index of the choice to accumulate (default: 0)</li></ul><h2 id="accumulate_content/2-examples" class="section-heading"><a href="#accumulate_content/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="s">&quot;Hello world!&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">accumulate_content</span><span class="p" data-group-id="9288028003-1">(</span><span class="p" data-group-id="9288028003-2">[</span><span class="n">chunk1</span><span class="p">,</span><span class="w"> </span><span class="n">chunk2</span><span class="p">,</span><span class="w"> </span><span class="n">chunk3</span><span class="p" data-group-id="9288028003-2">]</span><span class="p" data-group-id="9288028003-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="extract_content/2">
+
+    <span id="extract_content/1"></span>
+
+  <div class="detail-header">
+    <a href="#extract_content/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">extract_content(chunk, choice_index \\ 0)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L164" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> extract_content(<a href="#t:chunk/0">chunk</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
+      </div>
+
+<p>Extract content from a stream chunk.</p><h2 id="extract_content/2-parameters" class="section-heading"><a href="#extract_content/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">chunk</code> - Parsed chunk data</li><li><code class="inline">choice_index</code> - Index of the choice to extract (default: 0)</li></ul><h2 id="extract_content/2-examples" class="section-heading"><a href="#extract_content/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">extract_content</span><span class="p" data-group-id="2109017524-1">(</span><span class="n">chunk</span><span class="p" data-group-id="2109017524-1">)</span><span class="w">
+</span><span class="no">nil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">extract_content</span><span class="p" data-group-id="2109017524-2">(</span><span class="n">chunk_without_content</span><span class="p" data-group-id="2109017524-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="extract_finish_reason/2">
+
+    <span id="extract_finish_reason/1"></span>
+
+  <div class="detail-header">
+    <a href="#extract_finish_reason/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">extract_finish_reason(chunk, choice_index \\ 0)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L200" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> extract_finish_reason(<a href="#t:chunk/0">chunk</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil</pre>
+
+      </div>
+
+<p>Extract finish reason from a stream chunk.</p><h2 id="extract_finish_reason/2-parameters" class="section-heading"><a href="#extract_finish_reason/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">chunk</code> - Parsed chunk data</li><li><code class="inline">choice_index</code> - Index of the choice to extract (default: 0)</li></ul><h2 id="extract_finish_reason/2-examples" class="section-heading"><a href="#extract_finish_reason/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="s">&quot;stop&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">extract_finish_reason</span><span class="p" data-group-id="8111986830-1">(</span><span class="n">chunk</span><span class="p" data-group-id="8111986830-1">)</span><span class="w">
+</span><span class="no">nil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">extract_finish_reason</span><span class="p" data-group-id="8111986830-2">(</span><span class="n">incomplete_chunk</span><span class="p" data-group-id="8111986830-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="extract_tool_calls/2">
+
+    <span id="extract_tool_calls/1"></span>
+
+  <div class="detail-header">
+    <a href="#extract_tool_calls/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">extract_tool_calls(chunk, choice_index \\ 0)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L182" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> extract_tool_calls(<a href="#t:chunk/0">chunk</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>() | nil</pre>
+
+      </div>
+
+<p>Extract tool calls from a stream chunk.</p><h2 id="extract_tool_calls/2-parameters" class="section-heading"><a href="#extract_tool_calls/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">chunk</code> - Parsed chunk data</li><li><code class="inline">choice_index</code> - Index of the choice to extract (default: 0)</li></ul><h2 id="extract_tool_calls/2-examples" class="section-heading"><a href="#extract_tool_calls/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="6675725664-1">[</span><span class="p" data-group-id="6675725664-2">%{</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;call_123&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="6675725664-2">}</span><span class="p" data-group-id="6675725664-1">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">extract_tool_calls</span><span class="p" data-group-id="6675725664-3">(</span><span class="n">chunk</span><span class="p" data-group-id="6675725664-3">)</span><span class="w">
+</span><span class="no">nil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">extract_tool_calls</span><span class="p" data-group-id="6675725664-4">(</span><span class="n">chunk_without_tools</span><span class="p" data-group-id="6675725664-4">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="parse_chunk/2">
+
+    <span id="parse_chunk/1"></span>
+
+  <div class="detail-header">
+    <a href="#parse_chunk/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">parse_chunk(chunk_data, options \\ [])</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L107" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> parse_chunk(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: {:ok, <a href="#t:chunk/0">chunk</a>()} | :done | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>Parse a single SSE chunk.</p><h2 id="parse_chunk/2-parameters" class="section-heading"><a href="#parse_chunk/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">chunk_data</code> - Raw chunk data</li><li><code class="inline">options</code> - Parsing options (optional)</li></ul><h2 id="parse_chunk/2-options" class="section-heading"><a href="#parse_chunk/2-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:validate</code> - Validate the parsed chunk (default: true)</li></ul><h2 id="parse_chunk/2-examples" class="section-heading"><a href="#parse_chunk/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="3323545119-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">chunk</span><span class="p" data-group-id="3323545119-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">parse_chunk</span><span class="p" data-group-id="3323545119-2">(</span><span class="s">&quot;data: {...}&quot;</span><span class="p" data-group-id="3323545119-2">)</span><span class="w">
+</span><span class="ss">:done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">parse_chunk</span><span class="p" data-group-id="3323545119-3">(</span><span class="s">&quot;data: [DONE]&quot;</span><span class="p" data-group-id="3323545119-3">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="process_stream/3">
+
+    <span id="process_stream/2"></span>
+
+  <div class="detail-header">
+    <a href="#process_stream/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">process_stream(stream_data, callback, options \\ [])</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L59" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> process_stream(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="#t:callback/0">callback</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: :ok | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>Process a stream of Server-Sent Events.</p><h2 id="process_stream/3-parameters" class="section-heading"><a href="#process_stream/3-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">stream_data</code> - Raw stream data</li><li><code class="inline">callback</code> - Function to process each chunk</li><li><code class="inline">options</code> - Processing options (optional)</li></ul><h2 id="process_stream/3-options" class="section-heading"><a href="#process_stream/3-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:validate</code> - Validate chunks before processing (default: true)</li><li><code class="inline">:skip_empty</code> - Skip empty chunks (default: true)</li><li><code class="inline">:timeout</code> - Stream timeout in milliseconds (default: 30_000)</li></ul><h2 id="process_stream/3-examples" class="section-heading"><a href="#process_stream/3-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">process_stream</span><span class="p" data-group-id="6067480717-1">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="6067480717-2">fn</span><span class="w"> </span><span class="n">chunk</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="k">case</span><span class="w"> </span><span class="n">get_in</span><span class="p" data-group-id="6067480717-3">(</span><span class="n">chunk</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6067480717-4">[</span><span class="s">&quot;choices&quot;</span><span class="p">,</span><span class="w"> </span><span class="nc">Access</span><span class="o">.</span><span class="n">at</span><span class="p" data-group-id="6067480717-5">(</span><span class="mi">0</span><span class="p" data-group-id="6067480717-5">)</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;delta&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;content&quot;</span><span class="p" data-group-id="6067480717-4">]</span><span class="p" data-group-id="6067480717-3">)</span><span class="w"> </span><span class="k" data-group-id="6067480717-6">do</span><span class="w">
+    </span><span class="no">nil</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="ss">:ok</span><span class="w">
+    </span><span class="n">content</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">write</span><span class="p" data-group-id="6067480717-7">(</span><span class="n">content</span><span class="p" data-group-id="6067480717-7">)</span><span class="w">
+  </span><span class="k" data-group-id="6067480717-6">end</span><span class="w">
+</span><span class="k" data-group-id="6067480717-2">end</span><span class="p" data-group-id="6067480717-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="request_stream/6">
+
+  <div class="detail-header">
+    <a href="#request_stream/6" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">request_stream(config, method, path, body, query_params, callback)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L262" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> request_stream(
+  <a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(),
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(),
+  <a href="#t:callback/0">callback</a>()
+) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Make a streaming HTTP request.</p><h2 id="request_stream/6-parameters" class="section-heading"><a href="#request_stream/6-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">method</code> - HTTP method</li><li><code class="inline">path</code> - API path</li><li><code class="inline">body</code> - Request body</li><li><code class="inline">query_params</code> - Query parameters</li><li><code class="inline">callback</code> - Function to handle each chunk</li></ul><h2 id="request_stream/6-examples" class="section-heading"><a href="#request_stream/6-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">request_stream</span><span class="p" data-group-id="9411429426-1">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/v1/chat/completions&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9411429426-2">[</span><span class="p" data-group-id="9411429426-2">]</span><span class="p">,</span><span class="w"> </span><span class="n">callback</span><span class="p" data-group-id="9411429426-1">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="stream_complete?/1">
+
+  <div class="detail-header">
+    <a href="#stream_complete?/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">stream_complete?(chunk)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L217" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> stream_complete?(<a href="#t:chunk/0">chunk</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+
+      </div>
+
+<p>Check if a chunk indicates the stream is complete.</p><h2 id="stream_complete?/1-parameters" class="section-heading"><a href="#stream_complete?/1-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">chunk</code> - Parsed chunk data</li></ul><h2 id="stream_complete?/1-examples" class="section-heading"><a href="#stream_complete?/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="no">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">stream_complete?</span><span class="p" data-group-id="8915511674-1">(</span><span class="n">final_chunk</span><span class="p" data-group-id="8915511674-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">stream_complete?</span><span class="p" data-group-id="8915511674-2">(</span><span class="n">intermediate_chunk</span><span class="p" data-group-id="8915511674-2">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="validate_chunk/1">
+
+  <div class="detail-header">
+    <a href="#validate_chunk/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">validate_chunk(chunk)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/stream.ex#L125" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> validate_chunk(<a href="#t:chunk/0">chunk</a>()) :: :ok | {:error, <a href="https://hexdocs.pm/elixir/Exception.html#t:t/0">Exception.t</a>()}</pre>
+
+      </div>
+
+<p>Validate a parsed chunk.</p><h2 id="validate_chunk/1-parameters" class="section-heading"><a href="#validate_chunk/1-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">chunk</code> - Parsed chunk data</li></ul><h2 id="validate_chunk/1-examples" class="section-heading"><a href="#validate_chunk/1-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">validate_chunk</span><span class="p" data-group-id="9399673628-1">(</span><span class="p" data-group-id="9399673628-2">%{</span><span class="s">&quot;choices&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="9399673628-3">[</span><span class="n">...</span><span class="p" data-group-id="9399673628-3">]</span><span class="p" data-group-id="9399673628-2">}</span><span class="p" data-group-id="9399673628-1">)</span><span class="w">
+</span><span class="p" data-group-id="9399673628-4">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="n">reason</span><span class="p" data-group-id="9399673628-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Stream</span><span class="o">.</span><span class="n">validate_chunk</span><span class="p" data-group-id="9399673628-5">(</span><span class="p" data-group-id="9399673628-6">%{</span><span class="p" data-group-id="9399673628-6">}</span><span class="p" data-group-id="9399673628-5">)</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/mistralex_ai/0.1.0" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/mistralex_ai/0.1.0">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="mistralex_ai.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.38.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

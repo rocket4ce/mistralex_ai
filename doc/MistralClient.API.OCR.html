@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.38.2">
+    <meta name="project" content="mistralex_ai v0.1.0">
+
+
+    <title>MistralClient.API.OCR — mistralex_ai v0.1.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-KV3YOVJ3.css" />
+
+    <script defer src="dist/sidebar_items-2D2F7960.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-DPJLHKSM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="https://github.com/rocket4ce/mistralex_ai" class="sidebar-projectName" translate="no">
+mistralex_ai
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v0.1.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of mistralex_ai</span>
+            <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          </label>
+          <button type="submit" class="search-button" aria-label="Submit Search" tabindex="-1">
+            <i class="ri-search-2-line ri-lg" aria-hidden="true"></i>
+          </button>
+          <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+            <i class="ri-close-line ri-lg" title="Cancel search"></i>
+          </button>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">MistralClient.API.OCR</span> 
+      <small class="app-vsn" translate="no">(mistralex_ai v0.1.0)</small>
+
+    </h1>
+
+      <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/ocr.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>OCR (Optical Character Recognition) API operations.</p><p>This module provides functionality for processing documents and images
+using Mistral's OCR capabilities, extracting text and structured data
+from various document formats.</p><h2 id="module-features" class="section-heading"><a href="#module-features" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Features</span></h2><ul><li>Document URL processing</li><li>Image URL processing</li><li>Page-specific processing</li><li>Image extraction with base64 encoding</li><li>Structured annotation formats</li><li>Bounding box annotations</li></ul><h2 id="module-usage" class="section-heading"><a href="#module-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Process a document URL</span><span class="w">
+</span><span class="n">document</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.DocumentURLChunk</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="8886563663-1">(</span><span class="s">&quot;https://example.com/document.pdf&quot;</span><span class="p" data-group-id="8886563663-1">)</span><span class="w">
+</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.OCRRequest</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="8886563663-2">(</span><span class="s">&quot;pixtral-12b-2024-12-19&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">document</span><span class="p" data-group-id="8886563663-2">)</span><span class="w">
+
+</span><span class="p" data-group-id="8886563663-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="8886563663-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.OCR</span><span class="o">.</span><span class="n">process</span><span class="p" data-group-id="8886563663-4">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p" data-group-id="8886563663-4">)</span><span class="w">
+
+</span><span class="c1"># Process an image URL</span><span class="w">
+</span><span class="n">image_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.ImageURLChunkImageURL</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="8886563663-5">(</span><span class="s">&quot;data:image/png;base64,...&quot;</span><span class="p" data-group-id="8886563663-5">)</span><span class="w">
+</span><span class="n">image_chunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.ImageURLChunk</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="8886563663-6">(</span><span class="n">image_url</span><span class="p" data-group-id="8886563663-6">)</span><span class="w">
+</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.OCRRequest</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="8886563663-7">(</span><span class="s">&quot;pixtral-12b-2024-12-19&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">image_chunk</span><span class="p" data-group-id="8886563663-7">)</span><span class="w">
+
+</span><span class="p" data-group-id="8886563663-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="8886563663-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.OCR</span><span class="o">.</span><span class="n">process</span><span class="p" data-group-id="8886563663-9">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p" data-group-id="8886563663-9">)</span><span class="w">
+
+</span><span class="c1"># Process specific pages with options</span><span class="w">
+</span><span class="n">document</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.DocumentURLChunk</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="8886563663-10">(</span><span class="s">&quot;https://example.com/document.pdf&quot;</span><span class="p" data-group-id="8886563663-10">)</span><span class="w">
+</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.OCRRequest</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="8886563663-11">(</span><span class="s">&quot;pixtral-12b-2024-12-19&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">document</span><span class="p">,</span><span class="w">
+  </span><span class="ss">pages</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8886563663-12">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8886563663-12">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">include_image_base64</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+  </span><span class="ss">image_limit</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p" data-group-id="8886563663-11">)</span><span class="w">
+
+</span><span class="p" data-group-id="8886563663-13">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="8886563663-13">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.OCR</span><span class="o">.</span><span class="n">process</span><span class="p" data-group-id="8886563663-14">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p" data-group-id="8886563663-14">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h1>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#process/2" data-no-tooltip="" translate="no">process(config, request)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Process a document or image using OCR.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#process/4" data-no-tooltip="" translate="no">process(config, model, document, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Process a document or image using OCR with direct parameters.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="process/2">
+
+  <div class="detail-header">
+    <a href="#process/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">process(config, request)</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/ocr.ex#L87" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> process(<a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(), <a href="MistralClient.Models.OCRRequest.html#t:t/0">MistralClient.Models.OCRRequest.t</a>()) ::
+  {:ok, <a href="MistralClient.Models.OCRResponse.html#t:t/0">MistralClient.Models.OCRResponse.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Process a document or image using OCR.</p><h2 id="process/2-parameters" class="section-heading"><a href="#process/2-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">request</code> - OCR request with model, document, and options</li></ul><h2 id="process/2-options" class="section-heading"><a href="#process/2-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:id</code> - Request identifier</li><li><code class="inline">:pages</code> - List of specific page numbers to process (0-indexed)</li><li><code class="inline">:include_image_base64</code> - Include base64-encoded images in response</li><li><code class="inline">:image_limit</code> - Maximum number of images to extract</li><li><code class="inline">:image_min_size</code> - Minimum size (height and width) for image extraction</li><li><code class="inline">:bbox_annotation_format</code> - Structured output format for bounding boxes</li><li><code class="inline">:document_annotation_format</code> - Structured output format for the document</li></ul><h2 id="process/2-returns" class="section-heading"><a href="#process/2-returns" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Returns</span></h2><ul><li><code class="inline">{:ok, OCRResponse.t()}</code> - Successful OCR processing</li><li><code class="inline">{:error, term()}</code> - Error occurred during processing</li></ul><h2 id="process/2-examples" class="section-heading"><a href="#process/2-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Basic document processing</span><span class="w">
+</span><span class="n">document</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.DocumentURLChunk</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3166587853-1">(</span><span class="s">&quot;https://example.com/doc.pdf&quot;</span><span class="p" data-group-id="3166587853-1">)</span><span class="w">
+</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.OCRRequest</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3166587853-2">(</span><span class="s">&quot;pixtral-12b-2024-12-19&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">document</span><span class="p" data-group-id="3166587853-2">)</span><span class="w">
+</span><span class="p" data-group-id="3166587853-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="3166587853-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.OCR</span><span class="o">.</span><span class="n">process</span><span class="p" data-group-id="3166587853-4">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p" data-group-id="3166587853-4">)</span><span class="w">
+
+</span><span class="c1"># Image processing with options</span><span class="w">
+</span><span class="n">image_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.ImageURLChunkImageURL</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3166587853-5">(</span><span class="s">&quot;data:image/png;base64,...&quot;</span><span class="p" data-group-id="3166587853-5">)</span><span class="w">
+</span><span class="n">image_chunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.ImageURLChunk</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3166587853-6">(</span><span class="n">image_url</span><span class="p" data-group-id="3166587853-6">)</span><span class="w">
+</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.OCRRequest</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3166587853-7">(</span><span class="s">&quot;pixtral-12b-2024-12-19&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">image_chunk</span><span class="p">,</span><span class="w">
+  </span><span class="ss">include_image_base64</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+  </span><span class="ss">image_limit</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p" data-group-id="3166587853-7">)</span><span class="w">
+</span><span class="p" data-group-id="3166587853-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="3166587853-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.OCR</span><span class="o">.</span><span class="n">process</span><span class="p" data-group-id="3166587853-9">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p" data-group-id="3166587853-9">)</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="process/4">
+
+    <span id="process/3"></span>
+
+  <div class="detail-header">
+    <a href="#process/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">process(config, model, document, opts \\ [])</h1>
+
+
+        <a href="https://github.com/rocket4ce/mistralex_ai/blob/main/lib/mistral_client/api/ocr.ex#L125" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> process(
+  <a href="MistralClient.Config.html#t:t/0">MistralClient.Config.t</a>(),
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="MistralClient.Models.OCRRequest.html#t:document_type/0">MistralClient.Models.OCRRequest.document_type</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: {:ok, <a href="MistralClient.Models.OCRResponse.html#t:t/0">MistralClient.Models.OCRResponse.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+<p>Process a document or image using OCR with direct parameters.</p><p>This is a convenience function that creates an OCRRequest internally.</p><h2 id="process/4-parameters" class="section-heading"><a href="#process/4-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">config</code> - Client configuration</li><li><code class="inline">model</code> - Model to use for OCR processing</li><li><code class="inline">document</code> - Document or image to process</li><li><code class="inline">opts</code> - Additional options (see <a href="#process/2"><code class="inline">process/2</code></a> for details)</li></ul><h2 id="process/4-examples" class="section-heading"><a href="#process/4-examples" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Examples</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Process document URL</span><span class="w">
+</span><span class="n">document</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.Models.DocumentURLChunk</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="1560015749-1">(</span><span class="s">&quot;https://example.com/doc.pdf&quot;</span><span class="p" data-group-id="1560015749-1">)</span><span class="w">
+</span><span class="p" data-group-id="1560015749-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="1560015749-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.OCR</span><span class="o">.</span><span class="n">process</span><span class="p" data-group-id="1560015749-3">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pixtral-12b-2024-12-19&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">document</span><span class="p" data-group-id="1560015749-3">)</span><span class="w">
+
+</span><span class="c1"># Process with options</span><span class="w">
+</span><span class="p" data-group-id="1560015749-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p" data-group-id="1560015749-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">MistralClient.API.OCR</span><span class="o">.</span><span class="n">process</span><span class="p" data-group-id="1560015749-5">(</span><span class="w">
+  </span><span class="n">config</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;pixtral-12b-2024-12-19&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="n">document</span><span class="p">,</span><span class="w">
+  </span><span class="ss">pages</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1560015749-6">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="1560015749-6">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">include_image_base64</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+</span><span class="p" data-group-id="1560015749-5">)</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+      <p>
+
+          <span class="line">
+            <a href="https://hex.pm/packages/mistralex_ai/0.1.0" class="footer-hex-package">Hex Package</a>
+
+            <a href="https://preview.hex.pm/preview/mistralex_ai/0.1.0">Hex Preview</a>
+
+          </span>
+
+        <span class="line">
+          <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+            Search HexDocs
+          </button>
+
+            <a href="mistralex_ai.epub" title="ePub version">
+              Download ePub version
+            </a>
+
+        </span>
+      </p>
+
+      <p class="built-using">
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.38.2) for the
+
+          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+      </p>
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
